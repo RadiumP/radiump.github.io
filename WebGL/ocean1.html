@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Happy Birthday</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				color: #000;
+				font-family:Monospace;
+				font-size:13px;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				top: 0px; width: 100%;
+				text-align:center;
+				padding: 5px;
+			}
+
+			a {
+
+				color: #a06851;
+			}
+
+		</style>
+	</head>
+	<body>
+
+
+
+		<script src="3js/build/three.min.js"></script>
+
+		<script src="3js/js/controls/OrbitControls.js"></script>
+		<script src="3js/js/Mirror.js"></script>
+		<script src="3js/js/WaterShader.js"></script>
+		<script src="3js/js/SkyShader.js"></script>
+
+		<script src="3js/js/Detector.js"></script>
+		<script src="3js/js/libs/stats.min.js"></script>
+
+		<script src="3js/js/modifiers/ExplodeModifier.js"></script>
+		<script src="3js/js/modifiers/TessellateModifier.js"></script>
+
+		<script src="3js/js/geometries/TextGeometry.js"></script>
+		<script src="3js/js/utils/FontUtils.js"></script>
+		<script src="3js/fonts/helvetiker_bold.typeface.js"></script>
+
+			<script type="x-shader/x-vertex" id="vertexshader">
+
+			uniform float amplitude;
+
+			attribute vec3 customColor;
+			attribute vec3 displacement;
+
+			varying vec3 vNormal;
+			varying vec3 vColor;
+
+			void main() {
+
+				vNormal = normal;
+				vColor = customColor;
+
+				vec3 newPosition = position + normal * amplitude * displacement;
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
+
+			}
+
+		</script>
+
+		<script type="x-shader/x-fragment" id="fragmentshader">
+
+			varying vec3 vNormal;
+			varying vec3 vColor;
+
+			void main() {
+
+				const float ambient = 0.4;
+
+				vec3 light = vec3( 1.0 );
+				light = normalize( light );
+
+				float directional = max( dot( vNormal, light ), 0.0 );
+
+				gl_FragColor = vec4( ( directional + ambient ) * vColor, 1.0 );
+
+			}
+
+		</script>
+
+		<script>
+
+			if ( ! Detector.webgl ) {
+
+				Detector.addGetWebGLMessage();
+				document.getElementById( 'container' ).innerHTML = "";
+
+			}
+
+			var container, stats;
+			var camera, scene, renderer;
+			var sphere;
+
+			var parameters = {
+				width: 2000,
+				height: 2000,
+				widthSegments: 250,
+				heightSegments: 250,
+				depth: 1500,
+				param: 4,
+				filterparam: 1
+			};
+
+			var waterNormals;
+
+			init();
+			animate();
+
+			function init() {
+
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+				scene = new THREE.Scene();
+
+				camera = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 0.5, 3000000 );
+				camera.position.set( 2000, 750, 2000 );
+
+				controls = new THREE.OrbitControls( camera, renderer.domElement );
+				controls.enablePan = false;
+				controls.minDistance = 1000.0;
+				controls.maxDistance = 5000.0;
+				controls.maxPolarAngle = Math.PI * 0.495;
+				controls.center.set( 0, 500, 0 );
+
+				scene.add( new THREE.AmbientLight( 0x444444 ) );
+
+				var light = new THREE.DirectionalLight( 0xffffbb, 1 );
+				light.position.set( - 1, 1, - 1 );
+				scene.add( light );
+
+
+				var geometry = new THREE.TextGeometry( "HappyBirthday", {
+
+				size: 400,
+				height: 50,
+				curveSegments: 3,
+
+				font: "helvetiker",
+				weight: "bold",
+				style: "normal",
+
+				bevelThickness: 2,
+				bevelSize: 1,
+				bevelEnabled: true
+
+			});
+
+			geometry.center();
+
+
+			var tessellateModifier = new THREE.TessellateModifier( 80 );
+
+			for ( var i = 0; i < 6; i ++ ) {
+
+				tessellateModifier.modify( geometry );
+
+			}
+
+			var explodeModifier = new THREE.ExplodeModifier();
+			explodeModifier.modify( geometry );
+
+			var numFaces = geometry.faces.length;
+
+			//
+
+			geometry = new THREE.BufferGeometry().fromGeometry( geometry );
+
+			var colors = new Float32Array( numFaces * 3 * 3 );
+			var displacement = new Float32Array( numFaces * 3 * 3 );
+
+			var color = new THREE.Color();
+
+			for ( var f = 0; f < numFaces; f ++ ) {
+
+				var index = 9 * f;
+
+				var h = 0.5 * Math.random();
+				var s = 0.6 + 0.5 * Math.random();
+				var l = 0.1 + 0.5 * Math.random();
+
+				color.setHSL( h, s, l );
+
+				var d = 100 * ( 0.5 - Math.random() );
+
+				for ( var i = 0; i < 3; i ++ ) {
+
+					colors[ index + ( 3 * i )     ] = color.r;
+					colors[ index + ( 3 * i ) + 1 ] = color.g;
+					colors[ index + ( 3 * i ) + 2 ] = color.b;
+
+					displacement[ index + ( 3 * i )     ] = d;
+					displacement[ index + ( 3 * i ) + 1 ] = d;
+					displacement[ index + ( 3 * i ) + 2 ] = d;
+
+				}
+
+			}
+
+			geometry.addAttribute( 'customColor', new THREE.BufferAttribute( colors, 3 ) );
+			geometry.addAttribute( 'displacement', new THREE.BufferAttribute( displacement, 3 ) );
+
+			//
+
+			uniforms = {
+
+				amplitude: { type: "f", value: 0.0 }
+
+			};
+
+			var shaderMaterial = new THREE.ShaderMaterial( {
+
+				uniforms:       uniforms,
+				vertexShader:   document.getElementById( 'vertexshader' ).textContent,
+				fragmentShader: document.getElementById( 'fragmentshader' ).textContent
+
+			});
+
+			//
+
+			mesh = new THREE.Mesh( geometry, shaderMaterial );
+			mesh.position.y = 200;
+			scene.add( mesh );
+
+
+
+
+
+				waterNormals = new THREE.ImageUtils.loadTexture( '3js/textures/waternormals.jpg' );
+				waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
+
+				water = new THREE.Water( renderer, camera, scene, {
+					textureWidth: 512,
+					textureHeight: 512,
+					waterNormals: waterNormals,
+					alpha: 	1.0,
+					sunDirection: light.position.clone().normalize(),
+					sunColor: 0xffffff,
+					waterColor: 0x001e0f,
+					distortionScale: 50.0,
+				} );
+
+
+				mirrorMesh = new THREE.Mesh(
+					new THREE.PlaneBufferGeometry( parameters.width * 500, parameters.height * 500 ),
+					water.material
+				);
+
+				mirrorMesh.add( water );
+				mirrorMesh.rotation.x = - Math.PI * 0.5;
+				scene.add( mirrorMesh );
+
+
+				// load skybox
+
+				var cubeMap = new THREE.CubeTexture( [] );
+				cubeMap.format = THREE.RGBFormat;
+
+				var loader = new THREE.ImageLoader();
+				loader.load( '3js/textures/skyboxsun25degtest.png', function ( image ) {
+
+					var getSide = function ( x, y ) {
+
+						var size = 1024;
+
+						var canvas = document.createElement( 'canvas' );
+						canvas.width = size;
+						canvas.height = size;
+
+						var context = canvas.getContext( '2d' );
+						context.drawImage( image, - x * size, - y * size );
+
+						return canvas;
+
+					};
+
+					cubeMap.images[ 0 ] = getSide( 2, 1 ); // px
+					cubeMap.images[ 1 ] = getSide( 0, 1 ); // nx
+					cubeMap.images[ 2 ] = getSide( 1, 0 ); // py
+					cubeMap.images[ 3 ] = getSide( 1, 2 ); // ny
+					cubeMap.images[ 4 ] = getSide( 1, 1 ); // pz
+					cubeMap.images[ 5 ] = getSide( 3, 1 ); // nz
+					cubeMap.needsUpdate = true;
+
+				} );
+
+				var cubeShader = THREE.ShaderLib[ 'cube' ];
+				cubeShader.uniforms[ 'tCube' ].value = cubeMap;
+
+				var skyBoxMaterial = new THREE.ShaderMaterial( {
+					fragmentShader: cubeShader.fragmentShader,
+					vertexShader: cubeShader.vertexShader,
+					uniforms: cubeShader.uniforms,
+					depthWrite: false,
+					side: THREE.BackSide
+				} );
+
+				var skyBox = new THREE.Mesh(
+					new THREE.BoxGeometry( 1000000, 1000000, 1000000 ),
+					skyBoxMaterial
+				);
+
+				scene.add( skyBox );
+
+
+				var geometry = new THREE.IcosahedronGeometry( 400, 4 );
+
+				for ( var i = 0, j = geometry.faces.length; i < j; i ++ ) {
+
+					geometry.faces[ i ].color.setHex( Math.random() * 0xffffff );
+
+				}
+
+
+
+			}
+
+			//
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+				render();
+
+			}
+
+			function render() {
+
+				var time = performance.now() * 0.001;
+
+				//sphere.position.y = Math.sin( time ) * 500 + 250;
+				//sphere.rotation.x = time * 0.5;
+				//sphere.rotation.z = time * 0.51;
+				var time2 = Date.now() * 0.001;
+
+				uniforms.amplitude.value = 1.0 + Math.sin( time2 * 0.5 );
+
+
+				water.material.uniforms.time.value += 1.0 / 60.0;
+				controls.update();
+				water.render();
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+	</body>
+</html>

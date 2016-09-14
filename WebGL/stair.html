@@ -1,0 +1,163 @@
+<html>
+	<head>
+		<title>My first Three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 50%; height: 50% }
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+		<script src="3js/build/three.min.js"></script>
+		<script src="3js/build/three.js"></script>
+		<script src="js/OrbitControls.js"></script>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/Detector.js"></script>
+		<script src="js/CanvasRenderer.js"></script>
+		<script src="js/stats.min.js"></script>
+		<script>
+		var WIDTH = 1280, HEIGHT = 800;
+		var VIEW_ANGLE = 45, ASPECT = WIDTH/HEIGHT, NEAR = 0.1, FAR = 10000;
+		//var canvas=container.getElementsByTagName('canvas');
+		var renderer;
+		var camera;
+		var scene;
+		var controls;
+		var stats;
+		
+		
+		
+		
+		init();
+		animate();
+		
+		function init(){
+			scene = new THREE.Scene();
+			scene.fog = new THREE.FogExp2( 0xcccccc, 0.001 );//This class contains the parameters that define exponential fog, i.e., that grows exponentially denser with the distance.
+			renderer = new THREE.WebGLRenderer();
+			renderer.setClearColor(scene.fog.color);//Sets the clear color and opacity.
+			renderer.setPixelRatio(window.devicePixelRatio);
+			renderer.setSize(WIDTH,HEIGHT);
+
+			var container = document.getElementById( 'container' );
+			container.appendChild(renderer.domElement);
+
+			camera = new THREE.PerspectiveCamera( VIEW_ANGLE,ASPECT,NEAR,FAR);	
+			camera.position.z = 80;
+
+			controls = new THREE.OrbitControls(camera,renderer.domElement);
+			controls.enableDamping = true;//// If damping is enabled, you must call controls.update() in your animation loop
+			controls.dampingFactor = 0.25;
+			controls.enableZoom = true;
+
+
+
+			light = new THREE.DirectionalLight( 0xffffff );
+			light.position.set( 1, 1, 1 );
+			scene.add( light );
+
+			light = new THREE.DirectionalLight( 0x002288 );
+			light.position.set( -1, -1, -1 );
+			scene.add( light );
+
+			light = new THREE.AmbientLight( 0x222222 );
+			scene.add( light );
+
+
+			stats = new Stats();
+			stats.domElement.style.position = 'absolute';
+			stats.domElement.style.top = '0px';
+			stats.domElement.style.zIndex = 100;
+			container.appendChild( stats.domElement );
+
+
+			window.addEventListener( 'resize', onWindowResize, false );
+
+		}
+
+
+		function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
+
+				stats.update();
+
+				render();
+
+			}
+		
+		function createCup(){
+			var cupMaterial=new THREE.MeshLambertMaterial({color:0xFDD017});
+			var cupGeo=new THREE.CylinderGeometry(20,5,40,32);
+			var cup=new THREE.Mesh(cupGeo,cupMaterial);
+			cup.position.x=0;
+			cup.position.y=148;
+			cup.position.z=150;
+			scene.add(cup);cupGeo=new THREE.CylinderGeometry(10,10,5,32);
+			cup=new THREE.Mesh(cupGeo,cupMaterial);
+			cup.position.x=0;
+			cup.position.y=128;
+			cup.position.z=150;
+			scene.add(cup);
+		}
+		function createStairs(){
+			var stepMaterialVertical=new THREE.MeshLambertMaterial({color:0xA85F35});
+			var stepMaterialHorizontal=new THREE.MeshLambertMaterial({color:0xBC7349});
+			var stepWidth=50;
+			var stepSize=20;
+			var stepThickness=5;
+			var verticalStepHeight=stepSize;
+			var horizontalStepDepth=stepSize*2;
+			var stepHalfThickness=stepThickness/2;
+			var stepVertical=new THREE.CubeGeometry(stepWidth,verticalStepHeight,stepThickness);
+			var stepHorizontal=new THREE.CubeGeometry(stepWidth,stepThickness,horizontalStepDepth);
+			var stepMesh;
+
+			for(var i =0 ;i<5;i++)
+			{
+				stepMesh=new THREE.Mesh(stepVertical,stepMaterialVertical);
+				stepMesh.position.x=0;
+				stepMesh.position.y=verticalStepHeight/2+ (stepThickness + verticalStepHeight)*i;
+				stepMesh.position.z=i*(horizontalStepDepth-stepThickness);
+				stepMesh.updateMatrix();
+				stepMesh.matrixAutoUpdate = false;
+				scene.add(stepMesh);
+			
+
+				stepMesh=new THREE.Mesh(stepHorizontal,stepMaterialHorizontal);
+				stepMesh.position.x=0;
+				stepMesh.position.y=stepThickness/2+ verticalStepHeight+ (stepThickness + verticalStepHeight)*i;			
+				stepMesh.position.z=horizontalStepDepth/2- stepHalfThickness+i*(horizontalStepDepth-stepThickness);
+				stepMesh.updateMatrix();
+				stepMesh.matrixAutoUpdate = false;
+				scene.add(stepMesh);
+			}	
+			
+			
+
+		}
+
+		var stairs=createStairs();
+		scene.add(stairs);
+		var cup = createCup();
+		scene.add(cup);
+		function render () {	
+			renderer.render(scene, camera);
+			};
+
+		render();
+
+		</script>
+	</body>
+</html>

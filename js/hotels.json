@@ -1,0 +1,65 @@
+[{ 
+    "lat": 33.423745,
+    "lng":  -111.939357,
+    "city":"Tempe",
+    "content":"test content1", 
+    "priceRank": 1,
+    "reviewRank": 1,
+    "t":41,
+    "r":50,
+    "p":90
+},
+{ 
+    "lat": 33.423745,
+    "lng":  -111.357,
+    "city":"Tempe",
+    "content":"test content1",
+    "priceRank": 2,
+    "reviewRank": 4, 
+    "t":50,
+    "r":60,
+    "p":20
+},
+{ 
+    "lat": 33.423745,
+    "lng":  -111.939357,
+    "city":"Mesa",
+    "content":"test content1",
+    "priceRank": 3,
+    "reviewRank": 2,
+    "t":20,
+    "r":20,
+    "p":50 
+},
+{ 
+    "lat": 33.423745,
+    "lng":  -112.959357,
+    "city":"Mesa",
+    "content":"test content1",
+    "priceRank": 4,
+    "reviewRank": 3,
+    "t":40,
+    "r":54,
+    "p":30
+},{ 
+    "lat": 33.23745,
+    "lng":  -111.939357,
+    "city":"Mesa",
+    "content":"test content1",
+    "priceRank": 3,
+    "reviewRank": 2,
+    "t":20,
+    "r":20,
+    "p":50 
+},
+{ 
+    "lat": 33.43745,
+    "lng":  -112.959357,
+    "city":"Mesa",
+    "content":"test content1",
+    "priceRank": 4,
+    "reviewRank": 3,
+    "t":40,
+    "r":54,
+    "p":30
+}]
