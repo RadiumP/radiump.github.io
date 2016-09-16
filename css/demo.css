@@ -25,10 +25,18 @@ a{
 }
 .content{
 	position:relative;
+	padding-top: 60px;
     width:580px;
-    margin: 0 auto;
+    margin: 0px auto;
+}
+.play{
+	position:relative;
+	padding-top: 120px;
+    width:580px;
+    margin: 0px auto;
 }
 h1{
+	float:left;
 	margin:0px;
 	padding:20px;
 	font-size:42px;
@@ -42,6 +50,51 @@ h1 span{
 	color:#ddd;
 	padding-top:10px;
 }
+
+.svg-filters{
+	position:absolute;
+	
+	 width: 1px;
+	 height: 1px
+}
+.ct-header {
+    position: relative;
+    z-index: 999;
+    padding: 30px 0;
+   
+}
+
+.ct-connect {
+    float: right;
+    margin: 15px 22px 0 0;
+    margin-top: 15px;
+    margin-right: 22px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    width: 252px;
+    height: 34px;
+}
+.ct-connect li{
+	float:left;
+}
+
+.ct-connect li a {
+    position: relative;
+    display: block;
+    margin: 0 2px;
+    width: 34px;
+    height: 34px;
+    outline: none;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+}
+
 /* Header Style */
 .header{
 	font-family:'Arial Narrow', Arial, sans-serif;
@@ -109,3 +162,56 @@ h1 span{
 	color:#fff;
 	text-shadow:none;
 }
+
+
+.button--10 {
+  -webkit-font-smoothing: antialiased;
+  background-color: #222;
+  border: none;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85em;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  letter-spacing: 0.1em;
+  color: white;
+  padding: 20px 40px;
+  text-transform: uppercase;
+  -webkit-transition: background-color 0.1s ease-out;
+  -moz-transition: background-color 0.1s ease-out;
+  transition: background-color 0.1s ease-out; 
+  margin: 0px 225px;
+
+}
+  .button--10:hover {
+    background-color: #2CD892;
+    color: #fff; }
+  .button--10:focus {
+    outline: none;
+    color: #fff; }
+.button--10 {
+  position: relative;
+  background: none;
+  z-index: 0;
+  width: 135px; }
+  .button--10:hover {
+    background: none; }
+  .button--10:hover .button__bg {
+    background: #2CD892; }
+  .button--10 .button__bg {
+    transform: translateZ(0);
+    outline: 90px solid transparent !important;
+    background: #222;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    -webkit-transition: background 0.1s ease-out;
+    -moz-transition: background 0.1s ease-out;
+    transition: background 0.1s ease-out;
+    -webkit-filter: url("#filter-music");
+    filter: url("../#filter-music");
+    border-radius: 40px; }

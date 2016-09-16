@@ -17,24 +17,93 @@
         <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css' />
     </head>
     <body style="background-image: url(images/pattern.png), url(images/bg.jpg);">
+
         <div class="container">
-            <div class="header">
-                
-               
-                <div class="clr"></div>
+            <div class = "header"></div>
+
+            <div class = "ct-header">
+            <h1>WELCOME <span>to Chenyang's World</span></h1>   
+            <ul class = "ct-connect">
+                <li><a href = "https://www.facebook.com/young.lee.3701779"><img src = "icon/fb.png" style="width:42px;height:42px;border:0;"></a></li>
+                 <li><a href = "https://twitter.com/YoLeeWannaBaMC"><img src = "icon/twitter.png" style="width:42px;height:42px;border:0;"></a></li>
+                  <li><a href = "https://www.linkedin.com/in/chenyang-li-9141a7112"><img src = "icon/in.png" style="width:42px;height:42px;border:0;"></a></li>
+                   <li><a href = "https://www.pinterest.com/atychip/"><img src = "icon/pin.png" style="width:42px;height:42px;border:0;"></a></li>
+                    <li><a href = "https://www.instagram.com/atychip"><img src = "icon/insta.png" style="width:42px;height:42px;border:0;"></a></li>
+                 
+            </ul>
             </div>
-            <h1>WELCOME <span>to Chenyang's World</span></h1>
+
             <div class="content">
                 <ul class="bmenu">
                     <li><a href="img/Assign0_Chenyang_Li.jpg">About</a></li>
                     <li><a href="WebGL/ocean.html">Webgl</a></li>
                     <li><a href="dataviz.html">Data Viz</a></li>
                     <li><a href="rivalry.html">Personal Projects</a></li>
-                    <li><a href="#">Interesting</a></li>
+                    <li><a href="#">Interests</a></li>
                 </ul>
               
             </div>
+            <div class = "play">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-filters">
+                        <defs>
+                            <filter id="filter-music">
+                                <feTurbulence type="fractalNoise" baseFrequency="0.000001" numOctaves="1" result="warp" />
+                                <feOffset dx="0" dy="-90" result="warpOffset" />
+                                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warpOffset" />
+                            </filter>
+                        </defs>
+                    </svg>
+                    <button id="component-10" class="button button--10">
+                        <span class="button__text">Pause</span>
+                        <span class="button__bg"></span>
+                    </button>
+            </div>
+
         </div>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script type="text/javascript" src = "js/TweenMax.min.js"></script>
+        <script type="text/javascript">
+                    initBt10();
+                        // Button 10
+            function initBt10() {
+              var bt = document.querySelectorAll('#component-10')[0];
+              var btTxt = bt.querySelector('.button__text');
+              var isPlaying = true;
+              var turbVal = { val: 0.000001 };
+              var turbValX = { val: 0.000001 };
+              var turb = document.querySelectorAll('#filter-music feTurbulence')[0];
+              var btTl = new TimelineLite({ paused: false, onUpdate: function() {
+                turb.setAttribute('baseFrequency', turbVal.val + ' ' + turbValX.val);
+              }, onComplete: function() { 
+                btTl.reverse();
+              }, onReverseComplete: function() {
+                btTl.restart();
+              } });
+             
+              btTl.to(turbValX, 0.4, { val: 0.04, ease: Power0.easeNone }, 0);
+              btTl.to(turbVal, 0.1, { val: 0.2 ,ease: Power0.easeNone }, 0);
+              var audio = new Audio('music/G-Eazy,Bebe Rexha - Me, Myself & I.mp3');
+               audio.play();
+              bt.addEventListener('click', function() {
+                if(isPlaying) {
+                  btTxt.textContent = 'Play';
+                  btTl.pause()
+                  var btTl2 = new TimelineLite({ onUpdate: function() {
+                    turb.setAttribute('baseFrequency', turbVal.val + ' ' + turbValX.val);
+                  } });
+                  btTl2.to(turbVal, 0.1, { val: 0.000001 });
+                  btTl2.to(turbValX, 0.1, { val: 0.000001 }, 0);
+                  isPlaying = false;
+                  audio.pause();
+
+                } else {
+                  btTxt.textContent = 'Pause';
+                  btTl.play();
+                  isPlaying = true;
+                  audio.play();
+                }
+              });
+            }
+        </script>
     </body>
 </html>

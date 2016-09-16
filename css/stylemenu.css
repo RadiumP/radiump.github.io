@@ -15,10 +15,11 @@
 	transition: background-color 0.5s ease-in-out;
 }
 .bmenu:hover{
-	background: rgba(0,0,0,0.2);
+	background: rgba(0,215,128,0.2);
 }
 .bmenu li{
-	font-size: 40px;
+	font-size: 45px;
+	padding-top: 10px;
 	display: block;
 	line-height: 66px;
 }
@@ -47,7 +48,7 @@
 .bmenu li a:hover{
 	text-shadow: none;
 	color: #fff;
-	background: rgba(255,215,0,0.8);
+	background: rgba(255,0,0,0.8);
 	-moz-transform: scale(1); 
 	-ms-transform: scale(1); 
 	-o-transform: scale(1); 
