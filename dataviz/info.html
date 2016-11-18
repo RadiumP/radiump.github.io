@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+     <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+    <script src="js/liquidFillGauge.js" language="JavaScript"></script>
+    <style>
+   #detail{
+    background-color: aliceblue;
+    padding:5px;
+    color:maroon;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+   }
+   
+	
+    </style>
+
+</head>
+<body>
+<div id = "detail">
+
+<h2 id="name"></h2>
+<h3>Style:</h3>
+<p id="cate"></p>
+<h3>Rating:</h3>
+<svg id="fillgauge2" width="50" height="50"></svg>
+<svg id="fillgauge3" width="50" height="50"></svg>
+<svg id="fillgauge5" width="50" height="50"></svg>
+<p id="price"></p>
+<h3>Address:</h3>
+<p id="address"></p>
+<h3>Top Reviews:</h3>
+<p id="top1"></p>
+<p id="top2"></p>
+<p id="top3"></p>
+</div>
+<script language="JavaScript">
+    //mod
+    var data = parent.passdata;//json
+    var index = parent.index;//click
+    document.getElementById("name").innerHTML = data[index].name;
+    document.getElementById("cate").innerHTML = data[index].categories;
+     
+    var config1 = liquidFillGaugeDefaultSettings();
+    config1.circleColor = "#ee6121";
+    config1.textColor = "#21b6ca";
+    config1.waveTextColor = "#000000"; //"#ee2147";
+    config1.waveColor = "#f39468";
+    config1.circleThickness = 0.2;
+    config1.textVertPosition = 0.2;
+    config1.waveAnimateTime = 1000;
+    config1.minValue = 4;
+    config1.maxValue = 5;
+    config1.displayPercent = false;
+    loadLiquidFillGauge("fillgauge2",data[index].combine_stars, config1);
+    
+    var config2 = liquidFillGaugeDefaultSettings();
+   config2.circleColor = "#21b6ca";
+    config2.textColor = "#553300";
+    config2.waveTextColor = "#2162ca";
+    config2.waveColor = "#20d6cc";
+    config2.circleThickness = 0.1;
+    config2.circleFillGap = 0.2;
+    config2.textVertPosition = 0.8;
+    config2.waveAnimateTime = 2000;
+    config2.waveHeight = 0.3;
+    config2.waveCount = 2;
+    config2.minValue = 4;
+    config2.maxValue = 5;
+    config2.displayPercent = false;
+    loadLiquidFillGauge("fillgauge3", data[index].review_stars, config2);
+    
+    var config4 = liquidFillGaugeDefaultSettings();
+    config4.circleThickness = 0.15;
+    config4.circleColor = "#78c35f";
+    config4.textColor = "#555500";
+    config4.waveTextColor = "#529b3a";
+    config4.waveColor = "#97d184";
+    config4.textVertPosition = 0.8;
+    config4.waveAnimateTime = 1000;
+    config4.waveHeight = 0.05;
+    config4.waveAnimate = true;
+    config4.waveRise = false;
+    config4.waveOffset = 0.25;
+    config4.textSize = 1;
+    config4.waveCount = 3;
+    config4.minValue = 0;
+    config4.maxValue = 5;
+    config4.displayPercent = false;
+    loadLiquidFillGauge("fillgauge5", 5-data[index].price, config4);
+    document.getElementById("address").innerHTML = data[index].full_address;
+    document.getElementById("top1").innerHTML = data[index].top_1; 
+    document.getElementById("top2").innerHTML = data[index].top_2;
+    document.getElementById("top3").innerHTML = data[index].top_3;
+ </script>
+</body>
+
+
+
+</html>
