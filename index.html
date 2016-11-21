@@ -36,9 +36,9 @@
             <div class="content">
                 <ul class="bmenu">
                     <li><a href="img/Assign0_Chenyang_Li.jpg">About</a></li>
-                    <li><a href="WebGL.html">Webgl</a></li>
-                    <li><a href="dv.html">Data Viz</a></li>
-                    <li><a href="projects.html">Personal Projects</a></li>
+                    <li><a href="WebGL.html">WebGL</a></li>
+                    <li><a href="projects.html">Computer Graphics</a></li>
+                    <li><a href="dv.html">Personal Projects</a></li>
                     <li><a href="#">Interests</a></li>
                 </ul>
               
@@ -82,8 +82,10 @@
              
               btTl.to(turbValX, 0.4, { val: 0.04, ease: Power0.easeNone }, 0);
               btTl.to(turbVal, 0.1, { val: 0.2 ,ease: Power0.easeNone }, 0);
-              var audio = new Audio('music/G-Eazy,Bebe Rexha - Me, Myself & I.mp3');
-               audio.play();
+              var audio = new Audio('music/Too Bad.mp3');
+              audio.loop = true;
+              audio.play();
+              
               bt.addEventListener('click', function() {
                 if(isPlaying) {
                   btTxt.textContent = 'Play';
