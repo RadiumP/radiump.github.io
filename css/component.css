@@ -10,6 +10,7 @@
 } /* Made with http://icomoon.io/app */
 
 /* General style */
+
 .grid-gallery ul {
 	list-style: none;
 	margin: 0;
@@ -252,6 +253,7 @@ span.nav-close:before {
 	right: 10px;
 	content: "\e604";
 }
+
 
 /* Example media queries (reduce number of columns and change slideshow layout) */
 
