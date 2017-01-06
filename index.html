@@ -83,10 +83,22 @@
              
               btTl.to(turbValX, 0.4, { val: 0.04, ease: Power0.easeNone }, 0);
               btTl.to(turbVal, 0.1, { val: 0.2 ,ease: Power0.easeNone }, 0);
-              var audio = new Audio('music/Too Bad.mp3');
-              audio.loop = true;
-              audio.play();
+              var audio = new Audio();
+              var playlist = new Array('music/Too Bad.mp3','music/Actor.mp3','music/Me, Myself & I.mp3','music/pop.mp3')
+
               
+              //console.log(playlist[1])
+              audio.src = playlist[3];
+              //audio.loop = true;
+              audio.play();
+              var i = 0;
+              audio.addEventListener('ended', function () {
+			    i = ++i < playlist.length ? i : 0;
+			    console.log(playlist[i])
+			    audio.src = playlist[i];
+			    audio.play();
+			}, true);
+
               bt.addEventListener('click', function() {
                 if(isPlaying) {
                   btTxt.textContent = 'Play';
