@@ -61,7 +61,7 @@ THREE.FontUtils = {
 	drawText: function ( text ) {
 
 		// RenderText
-
+		
 		var i,
 			face = this.getFace(),
 			scale = this.size / face.resolution,
@@ -73,7 +73,8 @@ THREE.FontUtils = {
 
 		for ( i = 0; i < length; i ++ ) {
 
-			var path = new THREE.Path();
+			//updated since Path move things into ShapePath
+			var path = new THREE.ShapePath();
 
 			var ret = this.extractGlyphPoints( chars[ i ], face, scale, offset, path );
 			offset += ret.offset;
