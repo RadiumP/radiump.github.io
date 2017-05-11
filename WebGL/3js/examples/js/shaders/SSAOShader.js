@@ -17,10 +17,10 @@ THREE.SSAOShader = {
 
 		"tDiffuse":     { value: null },
 		"tDepth":       { value: null },
-		"size":         { value: new THREE.Vector2( 512, 512 ) },
-		"cameraNear":   { value: 1 },
-		"cameraFar":    { value: 100 },
-		"onlyAO":       { value: 0 },
+		"size":         { value: new THREE.Vector2( 0, 0 ) },
+		"cameraNear":   { value: 0 },
+		"cameraFar":    { value: 0 },
+		
 		"aoClamp":      { value: 0.5 },
 		"lumInfluence": { value: 0.5 }
 
@@ -48,7 +48,7 @@ THREE.SSAOShader = {
 			"uniform float logDepthBufFC;",
 		"#endif",
 
-		"uniform bool onlyAO;",      // use only ambient occlusion pass?
+		
 
 		"uniform vec2 size;",        // texture width, height
 		"uniform float aoClamp;",    // depth clamp - reduces haloing at screen edges
@@ -67,7 +67,7 @@ THREE.SSAOShader = {
 		// user variables
 
 		"const int samples = 8;",     // ao sample count
-		"const float radius = 5.0;",  // ao radius
+		"const float radius = 1.0;",  // ao radius
 
 		"const bool useNoise = false;",      // use noise instead of pattern for sample dithering
 		"const float noiseAmount = 0.0003;", // dithering amount
@@ -211,18 +211,16 @@ THREE.SSAOShader = {
 			"ao = 1.0 - ao;",
 
 			"vec3 color = texture2D( tDiffuse, vUv ).rgb;",
-
+            "vec3 deT = texture2D( tDepth, vUv ).rgb;",    
+        
+        
 			"vec3 lumcoeff = vec3( 0.299, 0.587, 0.114 );",
 			"float lum = dot( color.rgb, lumcoeff );",
 			"vec3 luminance = vec3( lum );",
 
 			"vec3 final = vec3( color * mix( vec3( ao ), vec3( 1.0 ), luminance * lumInfluence ) );",  // mix( color * ao, white, luminance )
 
-			"if ( onlyAO ) {",
-
-				"final = vec3( mix( vec3( ao ), vec3( 1.0 ), luminance * lumInfluence ) );",  // ambient occlusion only
-
-			"}",
+			
 
 			"gl_FragColor = vec4( final, 1.0 );",
 
