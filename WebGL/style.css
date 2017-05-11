@@ -44,7 +44,7 @@ body {
 			#dat {
 				user-select: none;
 				position: absolute;
-				left: 0;
+				left: 70%;
 				top: 0;
 				z-Index: 200;
 			}
