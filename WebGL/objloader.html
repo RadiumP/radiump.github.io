@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel = "stylesheet" type = "text/css" href ="style.css">
+        <title>OBJLoader + Phong Shading</title>
+		
+	</head>
+	<body>
+        <div id="dat">
+            <!-- gui-->
+		</div>
+        <div id="glFullscreen">
+			<canvas id="scene"></canvas>
+		</div>
+        
+        <input id="fileUploadInput" type="file" name="files[]" multiple accept=".obj,.mtl" />
+        
+		<script src="3js/build/three.js"></script>
+        <script src="3js/examples/js/loaders/MTLLoader.js"></script>
+        <script src="3js/examples/js/loaders/OBJLoader2.js"></script>
+        <script src="3js/examples/js/loaders/WWOBJLoader2.js"></script>
+        <script src="3js/examples/js/libs/dat.gui.min.js"></script>
+        <script src="3js/examples/js/controls/OrbitControls.js"></script>
+        
+        <!--PHONG shaders-->
+        <script id="phongvs" type="x-shader/x-vertex">
+			varying vec3 vecPos;
+            varying vec3 vecNormal;
+            
+            void main()	{
+                vecPos = (modelViewMatrix * vec4( position, 1.0 )).xyz;
+                vecNormal = (modelViewMatrix * vec4(normal, 0.0)).xyz;
+				
+                gl_Position = projectionMatrix *  vec4( vecPos, 1.0 );
+			}
+		</script>
+        
+        <script id="phongfs" type="x-shader/x-fragment">
+            precision highp float;
+            
+            uniform int mode;
+            
+			varying vec3 vecPos;
+            varying vec3 vecNormal;
+             struct PointLight{
+                vec3 color;
+                vec3 position; 
+                float distance; //for attenuation
+            };
+            uniform PointLight pointLights[NUM_POINT_LIGHTS];
+           
+			void main()	{
+                
+                //Bronze
+			    vec3 ambient = vec3(0.2125,0.1275,0.054);
+                vec3 diffuse = vec3(0.714,	0.4284,	0.18144);
+                vec3 specular = vec3(0.393548,	0.271906,	0.166721);
+                
+                float shininess = 25.6;
+                
+                for(int l = 0; l < NUM_POINT_LIGHTS; l++) {
+                    vec3 lightDirection = normalize(vecPos - pointLights[l].position);
+                    vec3 reflectDirection = normalize(-(lightDirection - 2.0 * dot(vecNormal,lightDirection) * vecNormal));
+                    vec3 ed = normalize(vecPos);
+                    diffuse *= max(dot(vecNormal,-lightDirection),0.0);
+                    diffuse = clamp(diffuse, 0.0, 1.0);
+                    specular *= pow(max(dot(reflectDirection,ed),0.0), shininess);
+                }
+                
+				//TEST: color red
+                //gl_FragColor = vec4(1.0, 0.0, 0.0, 0.0);
+                
+                
+                vec3 color = ambient + diffuse + specular;
+                
+                //TEST: individual components
+                //gl_FragColor = vec4(ambient, 1.0);
+                //gl_FragColor = vec4(diffuse, 1.0);
+                //gl_FragColor = vec4(specular, 1.0);
+                
+                //mode: for renderMode
+                if(mode == 0)gl_FragColor = vec4(color, 1.0);
+                else if(mode == 1)gl_FragColor = vec4(0.0, 1.0, 0.0, 0.0);
+			}
+		</script>
+        
+        
+		<script>
+           
+           //Class start
+           var OBJRenderer = (function () {
+               
+               //format validator
+               var Validator = THREE.OBJLoader2.prototype._getValidator();
+               //constructor
+               function OBJRenderer(target){
+                   this.renderer = null;
+                   this.canvas = target;
+                   this.scene = null;
+                   this.controls = null;
+                   
+                   this.aspectRatio = 1;
+                   this.updateAsRatio();
+
+                   this.cameraDefaults = {
+                        posCamera: new THREE.Vector3( 0.0, 17.0, 50.0 ),
+                        posCameraTarget: new THREE.Vector3( 0, 0, 0 ),
+                        near: 0.1,
+                        far: 10000,
+                        fov: 45
+                    };
+                   this.camera = null;
+                   this.cameraTarget = this.cameraDefaults.posCameraTarget;
+                   this.renderMode = 0;
+                   //Materials
+                   
+                   this.phongMat = new THREE.ShaderMaterial( { 
+                           uniforms: {mode: {type:'i', value:0 }},
+                           vertexShader: document.getElementById( 'phongvs' ).textContent,
+                           fragmentShader: document.getElementById( 'phongfs' ).textContent
+                           
+                   } );//CARE: wont read if shaders are behind
+                   
+                   this.redMat = new THREE.ShaderMaterial( { 
+                           uniforms: {mode: {type:'i', value:1 }},
+                           vertexShader: document.getElementById( 'phongvs' ).textContent,
+                           fragmentShader: document.getElementById( 'phongfs' ).textContent
+                           
+                   } );
+                   
+                   this.mat = this.phongMat;
+                   this.mat.needsUpdate = true; 
+                   this.phongMat.needsUpdate = true;
+                   this.redMat.needsUpdate = true;
+                   //Options
+                   this.grid = true;
+                   
+                   
+                   
+                   //cube for testing
+                   //this.cube = null;
+                   
+                   this.pivot = null;
+
+				   this.wwObjLoader2 = new THREE.OBJLoader2.WWOBJLoader2();
+                   //CROS
+				   this.wwObjLoader2.setCrossOrigin( 'anonymous' );
+                   
+                  
+                   // Check for the various File API support.
+                   this.fileApiAvailable = true;
+                   if ( window.File && window.FileReader && window.FileList && window.Blob ) {
+
+                        console.log( 'File API is supported! Enabling all features.' );
+
+                   } else {
+
+                        this.fileApiAvailable = false;
+                        console.warn( 'File API is not supported! Disabling file loading.' );
+
+                   }
+               }
+               
+               //init WebGL
+               OBJRenderer.prototype.init = function(){
+                   //init renderer
+                   this.renderer = new THREE.WebGLRenderer( {
+						canvas: this.canvas,
+						antialias: true,
+						autoClear: true
+					} );
+                   this.renderer.setClearColor( 0xBEBEBE );//gray background
+                   //init scene
+				   this.scene = new THREE.Scene();
+                   //init perspective cam
+                   this.camera = new THREE.PerspectiveCamera( this.cameraDefaults.fov, this.aspectRatio, this.cameraDefaults.near, this.cameraDefaults.far );
+				   this.resetCamera();
+                   
+                   //OrbitControl
+				   this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement );
+                   
+                   //CONTROL SETTINGS
+                   //this.controls.enablePan = true;
+//                   this.controls.minDistance = 1000.0;
+//                   this.controls.maxDistance = 5000.0;
+//                   this.controls.maxPolarAngle = Math.PI * 0.495;
+//                   this.controls.target.set( 0, 500, 0 );
+//                
+                   //basic lighting
+                   //Point Lights
+                   var pointLight1 = new THREE.PointLight( 0xFFFFFF,1.0 );
+                   var pointLight2 = new THREE.PointLight( 0xFFFFFF,1.0 );
+                   
+                   pointLight1.position.set( -20, -10, 20 );
+                   pointLight2.position.set( 20, 10, -20 );
+                   
+                   this.scene.add( pointLight1 );
+                   this.scene.add( pointLight2 );
+                   
+                   
+                   //add grid
+                    this.helper = new THREE.GridHelper( 1200, 60, 0xFF4444, 0x404040 );
+                    this.helper.name = 'grid';
+				    this.scene.add(this.helper);
+                   
+                    
+                   
+                   
+                   //TEST: cube for testing
+//                  var geometry = new THREE.BoxGeometry( 10, 10, 10 );
+//					var material = new THREE.MeshNormalMaterial();
+//					this.cube = new THREE.Mesh( geometry, material );
+//					this.cube.position.set( 0, 0, 0 );
+//					this.scene.add( this.cube );
+                   
+                   this.createPivot();
+               };
+               
+               //post processing
+               OBJRenderer.prototype.postProc = function(){
+                   //Attach shader material
+                   this.wwObjLoader2.clearAllCallbacks();
+                   var scope = this;//CARE!!!
+                   var callbackMeshLoaded = function (name,Buffer,material ) {
+				       
+                      
+                       
+				       return new THREE.OBJLoader2.WWOBJLoader2.LoadedMeshUserOverride( false, undefined, scope.mat );
+					};
+                   this.wwObjLoader2.registerCallbackMeshLoaded( callbackMeshLoaded);
+                   
+                   return true;
+               };
+               
+               OBJRenderer.prototype.createPivot = function(){
+                   //init pivot for objloader2
+                   this.pivot = new THREE.Object3D();
+                   this.pivot.name = 'Pivot';
+                   this.scene.add( this.pivot );
+               }
+               
+               OBJRenderer.prototype.loadFiles = function(prepData){
+                   prepData.setSceneGraphBaseNode( this.pivot );
+                   //stream?
+                   this.wwObjLoader2.prepareRun( prepData );
+                   this.wwObjLoader2.run();
+               };
+               
+               //file handling
+               OBJRenderer.prototype.fileHandler = function(event, pathTexture){
+                   //obj, mtl
+                   var fileObj = null;
+                   var fileMtl = null;
+                   
+                   var files = event.target.files;
+                   //extract file from input
+                   for(var i = 0, file; file = files[i]; i++){
+                       if ( file.name.indexOf( '\.obj' ) > 0 && fileObj === null ) {
+							fileObj = file;
+						}
+
+						if ( file.name.indexOf( '\.mtl' ) > 0 && fileMtl === null ) {
+							fileMtl = file;
+						}
+                   }
+                   
+                   if ( ! Validator.isValid( fileObj ) ) {
+						alert( 'Unable to load OBJ file from given files.' );
+                   }
+                   
+                   var fileReader = new FileReader();
+					fileReader.onload = function( fileDataObj ) {
+
+						var uint8Array = new Uint8Array( fileDataObj.target.result );
+						if ( fileMtl === null ) {
+                            //CARE
+							loading.loadFilesUser({
+								name: 'userObj',
+								objAsArrayBuffer: uint8Array,
+								pathTexture: pathTexture,
+								mtlAsString: null
+							})
+
+						} else {
+                            fileReader.onload = function( fileDataMtl ) {
+                                //CARE
+								loading.loadFilesUser({
+									name: 'userObj',
+									objAsArrayBuffer: uint8Array,
+									pathTexture: pathTexture,
+									mtlAsString: fileDataMtl.target.result
+								})
+							};
+							fileReader.readAsText( fileMtl );
+
+                        }
+                    };
+                   fileReader.readAsArrayBuffer( fileObj );
+               };
+               
+               //Load obj from input
+               OBJRenderer.prototype.loadFilesUser = function(objDef){
+                   var prepData = new THREE.OBJLoader2.WWOBJLoader2.PrepDataArrayBuffer(
+						objDef.name, objDef.objAsArrayBuffer, objDef.pathTexture, objDef.mtlAsString
+					);
+                   prepData.setSceneGraphBaseNode( this.pivot );
+                   
+                   //prepData.setStreamMeshes( this.streamMeshes );
+                   
+                   this.wwObjLoader2.prepareRun( prepData );    
+                   this.wwObjLoader2.run(); 
+               }
+               
+               //Handling window resize and canvas resize
+               OBJRenderer.prototype.resizeDisplayGL = function () {
+					
+
+					this.updateAsRatio();
+					this.renderer.setSize( this.canvas.offsetWidth, this.canvas.offsetHeight, false );
+
+					this.updateCamera();
+				};
+               
+               //Clear Scene
+               OBJRenderer.prototype.clearAllAssests = function () {
+					var scope = this;
+					var remover = function ( object3d ) {
+
+						if ( object3d === scope.pivot ) {
+							return;
+						}
+						console.log( 'Removing: ' + object3d.name );
+						scope.scene.remove( object3d );
+
+						if ( object3d.hasOwnProperty( 'geometry' ) ) {
+							object3d.geometry.dispose();
+						}
+						if ( object3d.hasOwnProperty( 'material' ) ) {
+
+							var mat = object3d.material;
+							if ( mat.hasOwnProperty( 'materials' ) ) {
+
+								var materials = mat.materials;
+								for ( var name in materials ) {
+
+									if ( materials.hasOwnProperty( name ) ) materials[ name ].dispose();
+
+								}
+							}
+						}
+						if ( object3d.hasOwnProperty( 'texture' ) ) {
+							object3d.texture.dispose();
+						}
+					};
+                   
+                   scope.scene.remove( scope.pivot );
+					scope.pivot.traverse( remover );
+					scope.createPivot();
+				};
+               
+               //Update AspectRatio
+               OBJRenderer.prototype.updateAsRatio = function(){
+                   this.aspectRatio = ( this.canvas.offsetHeight === 0 ) ? 1 : this.canvas.offsetWidth / this.canvas.offsetHeight;
+               };
+               
+               //Pre-Set Camera
+                OBJRenderer.prototype.resetCamera = function () {
+					this.camera.position.copy( this.cameraDefaults.posCamera );
+					this.cameraTarget.copy( this.cameraDefaults.posCameraTarget );
+
+					this.updateCamera();
+				};
+               
+               //Update Camera
+               OBJRenderer.prototype.updateCamera = function(){
+                   this.camera.aspect = this.aspectRatio;
+                   this.camera.lookAt( this.cameraTarget );
+                   this.camera.updateProjectionMatrix();
+               }
+               
+               //loop
+               OBJRenderer.prototype.render = function () {
+					if ( ! this.renderer.autoClear ) this.renderer.clear();
+
+					this.controls.update();
+                    
+                    //cube for testing
+					//this.cube.rotation.x += 0.05;
+					//this.cube.rotation.y += 0.05;
+
+					this.renderer.render( this.scene, this.camera );
+				};
+               
+               //Toggle Grid
+               OBJRenderer.prototype.alterGrid = function () {
+                   var scope = this;
+                   
+                   scope.grid = ! scope.grid;
+                   //console.log('Grid:' + scope.grid);
+                   if(!scope.grid){
+                       var selectedObject = scope.scene.getObjectByName('grid');
+                       scope.scene.remove(selectedObject);
+                   }else{
+                       scope.scene.add(scope.helper);
+                   }
+                   
+               };
+               	
+               
+               
+               //Toggle Rendering Mode
+               OBJRenderer.prototype.alterMode = function(mode){
+                   var scope = this;
+                   if(mode == 0) 
+                   {
+                       scope.mat = scope.phongMat;
+                       //scope.wwObjLoader2.run();
+                   }
+                   else if(mode == 1) {
+                       scope.mat = scope.redMat;
+                       //scope.wwObjLoader2.run();
+                   }
+                   //scope.postProc();
+                   
+                   
+               };
+               
+               return OBJRenderer;
+           })();//Class end
+               
+            //MAIN RENDERING PIPELINE
+            //Instance
+            var loading = new OBJRenderer(document.getElementById( 'scene' ));
+            
+            var animate = function () {
+                requestAnimationFrame( animate );
+                loading.render();
+            };
+            
+            //INIT GUI            
+            var fileInput = document.getElementById( 'fileUploadInput' );
+            
+            //ADD new UI options here:
+            var UICtrl = function() {
+                //this.ao = loading.ao;  
+                this.grid = loading.grid;
+                this.renderMode = loading.renderMode;
+            };
+            var uiCtrl = new UICtrl();
+            
+            var gui = new dat.GUI({
+                autoPlace:false,
+                width:320
+            });
+            
+            //ADD Menu
+            var menuDiv = document.getElementById( 'dat' );
+			menuDiv.appendChild(gui.domElement);
+            var folderOptions = gui.addFolder( 'Options' );
+            
+            //GRID
+            var showGrid = folderOptions.add(uiCtrl, 'grid').name('Show Grid');
+            showGrid.onChange(function(){
+                loading.alterGrid();
+            });
+            
+           //RENDERING MODE: FULL, AO, Phong
+//            var renderMode = folderOptions.add(uiCtrl, 'renderMode', {Full:0, AO:1, Phong: 2}).name('Render Mode');
+//            renderMode.onChange(function(value){
+//                if ( value == 0 ) {
+//					// framebuffer
+//                    loading.alterMode(0);
+//                    
+//                    
+//				} else if ( value == 1 ) {
+//					// onlyAO
+//                    loading.alterMode(1);
+//                   
+//				} else {
+//					console.error( "Not define renderModeChange type: " + value );
+//				}
+//                
+//            });
+            
+            //LOAD FILE/CLEAR SCENE
+            if(loading.fileApiAvailable){
+                //get input file
+                uiCtrl.loadObjFile = function(){
+                    fileInput.click();
+                }
+                folderOptions.add(uiCtrl, 'loadObjFile').name('Load OBJ Files');
+                
+                var handleFile = function(object3d){
+                    loading.fileHandler(object3d, uiCtrl.pathTexture);
+                };
+                fileInput.addEventListener( 'change' , handleFile, false );
+                
+                //CLEAR ALL
+                uiCtrl.clearAllAssests = function () {
+					loading.clearAllAssests();
+				};
+				folderOptions.add( uiCtrl, 'clearAllAssests' ).name( 'Clear Scene' );
+                
+            }
+            
+            
+            folderOptions.open();
+            
+            //init rendering
+            var resizeWindow = function(){
+                loading.resizeDisplayGL();
+            }       
+            
+            
+            window.addEventListener( 'resize', resizeWindow, false );
+            
+            
+            loading.init();   
+            loading.resizeDisplayGL();
+            loading.postProc();
+            
+            //DEFAULT OBJ + MTL
+            var prepData = new THREE.OBJLoader2.WWOBJLoader2.PrepDataFile(
+				'monkey',
+				'obj/',
+				'myMonkey.obj',
+				'obj/',
+				'myMonkey.mtl'
+			);
+            loading.loadFiles(prepData);
+            
+            //loop
+            animate();
+            
+		</script>
+        
+
+
+	</body>
+</html>
