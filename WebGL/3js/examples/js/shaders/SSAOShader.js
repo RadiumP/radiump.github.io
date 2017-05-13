@@ -20,7 +20,7 @@ THREE.SSAOShader = {
 		"size":         { value: new THREE.Vector2( 0, 0 ) },
 		"cameraNear":   { value: 0 },
 		"cameraFar":    { value: 0 },
-		
+		"onlyAO":       { value: 0 } , 
 		"aoClamp":      { value: 0.5 },
 		"lumInfluence": { value: 0.5 }
 
@@ -52,7 +52,9 @@ THREE.SSAOShader = {
 
 		"uniform vec2 size;",        // texture width, height
 		"uniform float aoClamp;",    // depth clamp - reduces haloing at screen edges
-
+        
+        "uniform int onlyAO;", 
+        
 		"uniform float lumInfluence;",  // how much luminance affects occlusion
 
 		"uniform sampler2D tDiffuse;",
@@ -208,18 +210,20 @@ THREE.SSAOShader = {
 			"}",
 
 			"ao /= float( samples );",
-			"ao = 1.0 - ao;",
+			"ao = 1.0 - ao * 2.0;",
 
 			"vec3 color = texture2D( tDiffuse, vUv ).rgb;",
             "vec3 deT = texture2D( tDepth, vUv ).rgb;",    
         
-        
+            
 			"vec3 lumcoeff = vec3( 0.299, 0.587, 0.114 );",
 			"float lum = dot( color.rgb, lumcoeff );",
 			"vec3 luminance = vec3( lum );",
-
-			"vec3 final = vec3( color * mix( vec3( ao ), vec3( 1.0 ), luminance * lumInfluence ) );",  // mix( color * ao, white, luminance )
-
+            "vec3 final = vec3( 0.0 );",
+            "if(onlyAO == 1){",
+			" final = vec3( mix( vec3( ao ), vec3( 1.0 ), luminance * lumInfluence ) );",  // mix( color * ao, white, luminance )
+            "}",
+            "else{final = vec3( color * mix( vec3( ao ), vec3( 1.0 ), luminance * lumInfluence ) );}",
 			
 
 			"gl_FragColor = vec4( final, 1.0 );",

@@ -25,6 +25,7 @@
         <script src="3js/examples/js/controls/OrbitControls.js"></script>
         <script src="3js/examples/js/libs/stats.min.js"></script>
         <script src="3js/examples/js/shaders/SSAOShader.js"></script>
+        <script src="ssao.js"></script>
         <script src="3js/examples/js/shaders/CopyShader.js"></script>
         <script src="3js/examples/js/postprocessing/EffectComposer.js"></script>
         <script src="3js/examples/js/postprocessing/RenderPass.js"></script>
@@ -63,7 +64,7 @@
 			    vec3 ambient = vec3(0.2125,0.1275,0.054);
                 vec3 diffuse = vec3(0.714,	0.4284,	0.18144);
                 vec3 specular = vec3(0.393548,	0.271906,	0.166721);
-                
+                if(mode == 1)diffuse = vec3(1.0,	0.0,	1.0);
                 float shininess = 25.6;
                 
                 for(int l = 0; l < NUM_POINT_LIGHTS; l++) {
@@ -88,7 +89,7 @@
                 
                 //mode: for renderMode
                 if(mode == 0)gl_FragColor = vec4(color, 1.0);
-                else if(mode == 1)gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+                else if(mode == 1)gl_FragColor = vec4(diffuse, 1.0);
 			}
 		</script>
         
@@ -146,7 +147,7 @@
                    this.effectComposer = null;
                    this.depthRenderTarget = null;
                    this.ssaoPass = null;
-                   
+                   this.noiseTexture = null;
                    
                    
                    //Options
@@ -261,18 +262,61 @@
                    this.depthRenderTarget = new THREE.WebGLRenderTarget( this.canvas.offsetWidth, this.canvas.offsetHeight, pars );    
                    this.depthRenderTarget.texture.name = "SSAOShader.rt";
                    
+                   //init kernal
+                   
+                   var kernel = [];
+                   var kernelSize = 16;
+                   var sample = new THREE.Vector3( );
+                   for(var i=0; i<kernelSize; i++) {
+                       sample.setX(2.0 * (Math.random() - 0.5));
+                       sample.setY(2.0 * (Math.random() - 0.5));
+                       sample.setZ(Math.random());
+                       sample.normalize();
+                       
+                       sample.addScalar(Math.random());
+                       var scale = i / 16.0;    
+                       //lerp
+                       scale = 0.1 + scale * scale * 0.9;
+                       sample.addScalar(scale);
+                       kernel.push(sample.x);
+                       kernel.push(sample.y);
+                       kernel.push(sample.z);	
+                            
+                   }
+                   
+                   //gen noise texture
+                   var pixels = new Uint8Array(4*4);
+                    for(var y=0; y<4; y++) {  
+                        for(var x=0; x<4; x++) {
+                            pixels[y*4 + x] = Math.floor(Math.random()*255);
+                        }
+  } 
+                   this.noiseTexture = new THREE.DataTexture( pixels,4,4, THREE.RGBFormat);
+                   this.noiseTexture.needsUpdate = true;
+                   
+                   var noiseScale = [this.canvas.offsetWidth/4, this.canvas.offsetHeight/4];
+                   
                    // Setup SSAO pass
                    this.ssaoPass = new THREE.ShaderPass( THREE.SSAOShader );
                    this.ssaoPass.renderToScreen = true;
                    
                    //ssaoPass.uniforms[ "tDiffuse" ].value will be set by ShaderPass
                    this.ssaoPass.uniforms[ "tDepth" ].value = this.depthRenderTarget.texture;
+                   
                    this.ssaoPass.uniforms[ 'size' ].value.set( this.canvas.offsetWidth, this.canvas.offsetHeight );
                    this.ssaoPass.uniforms[ 'cameraNear' ].value = this.camera.near;
                    this.ssaoPass.uniforms[ 'cameraFar' ].value = this.camera.far;
-                  
-                   this.ssaoPass.uniforms[ 'aoClamp' ].value = 0.3;
-                   this.ssaoPass.uniforms[ 'lumInfluence' ].value = 1;
+                   
+                   this.ssaoPass.uniforms[ 'aoClamp' ].value = 0.5;
+                   this.ssaoPass.uniforms[ 'lumInfluence' ].value = 1.0;
+                   this.ssaoPass.uniforms[ 'onlyAO' ].value = (this.renderMode);
+                   
+//                   this.ssaoPass.uniforms[ "tNoise" ].value = this.noiseTexture;
+//                   this.ssaoPass.uniforms["kernel"].value = kernel;
+//                   this.ssaoPass.uniforms["noiseScale"].value = noiseScale;
+//                   this.ssaoPass.uniforms["aspectRatio"].value = this.aspectRatio;
+//                   this.ssaoPass.uniforms[ 'fov' ].value = this.camera.fov * Math.PI / 180.0;
+                   
                    // Add pass to effect composer
                    this.effectComposer = new THREE.EffectComposer( this.renderer );
                    this.effectComposer.addPass( renderPass );
@@ -457,7 +501,7 @@
                         this.scene.overrideMaterial = this.depthMaterial;
                         this.renderer.render( this.scene, this.camera,this.depthRenderTarget,true );
                         
-                        this.scene.overrideMaterial = null;
+                        //this.scene.overrideMaterial = null;
                         this.effectComposer.render();
                         
                     }else{
@@ -492,11 +536,12 @@
                    if(mode == 0) 
                    {
                        scope.mat = scope.phongMat;
-                     
+                       this.renderMode = 0;
+                       this.ssaoPass.uniforms[ 'onlyAO' ].value = 0;
                    }
                    else if(mode == 1) {
                        scope.mat = scope.ambientMat;
-                      
+                       this.ssaoPass.uniforms[ 'onlyAO' ].value = 1;
                       
                    }
                    //scope.postProc();
@@ -577,7 +622,7 @@
             });
             
            //RENDERING MODE:  AmbientOnly, Phong
-            var renderMode = folderOptions.add(uiCtrl, 'renderMode', {Phong:0, AmbientOnly:1}).name('Render Mode');
+            var renderMode = folderOptions.add(uiCtrl, 'renderMode', {Phong:0, DiffuseOnly:1}).name('Render Mode');
             renderMode.onChange(function(value){
                 if ( value == 0 ) {
 					// framebuffer
@@ -636,6 +681,7 @@
             loading.init();  
             loading.initPostProc();
             loading.resizeDisplayGL();
+            
             loading.postProc();
             
             
