@@ -1,0 +1,4033 @@
+	Exporter version: 4.6.1, Blender version: 2.78 (sub 0)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used:
+		selected layers only:  false
+		flat shading entire scene:  false
+		inline textures:  false
+		texture directory:  C:\Project\Babylon\models\
+	Python World class constructor completed
+	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
+	processing begun of node:  $$$DUMMY.Plane02
+	processing begun of mesh:  sub04
+		processing begun of Standard material:  wire_000000000.002
+		num positions      :  14098
+		num normals        :  14098
+		num uvs            :  28196
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  73164
+	processing begun of mesh:  sub03
+		registered as also a user of material:  wire_000000000.002
+		num positions      :  37102
+		num normals        :  37102
+		num uvs            :  74204
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  196296
+		WARNING: # of 0 area faces found:  2
+	processing begun of mesh:  sub02
+		registered as also a user of material:  wire_000000000.002
+		num positions      :  38298
+		num normals        :  38298
+		num uvs            :  76596
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  196434
+		WARNING: # of 0 area faces found:  3
+	processing begun of mesh:  sub01
+		registered as also a user of material:  wire_000000000.002
+		num positions      :  36585
+		num normals        :  36585
+		num uvs            :  73170
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  196407
+		WARNING: # of 0 area faces found:  6
+	processing begun of mesh:  Object01
+		registered as also a user of material:  wire_000000000.002
+		num positions      :  4408
+		num normals        :  4408
+		num uvs            :  8816
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  26112
+	processing begun of mesh:  Object02
+		registered as also a user of material:  wire_000000000.002
+		num positions      :  1312
+		num normals        :  1312
+		num uvs            :  2624
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  6936
+	processing begun of mesh:  Box02
+		processing begun of Standard material:  wire_057008136.002
+		num positions      :  349
+		num normals        :  349
+		num uvs            :  698
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1632
+	processing begun of mesh:  Box03
+		registered as also a user of material:  wire_057008136.002
+		num positions      :  349
+		num normals        :  349
+		num uvs            :  698
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1632
+	processing begun of mesh:  Sphere02
+		processing begun of Standard material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere03
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere04
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere05
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere06
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere07
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere08
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere09
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere10
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere11
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere12
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere13
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere14
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere15
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere16
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere17
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere18
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere19
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere20
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere21
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere22
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere23
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere24
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere25
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere26
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere27
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere28
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere29
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere30
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere31
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere32
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere33
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere34
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere35
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere36
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere37
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere38
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere39
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere40
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere41
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere42
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere43
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere44
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere45
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere46
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere47
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere48
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere49
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere50
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere51
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere52
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere56
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere57
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere58
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere59
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere60
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere61
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere62
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere63
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere64
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere65
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere66
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere67
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere68
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere69
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere70
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere71
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere72
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere73
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere74
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere75
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere76
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere77
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere78
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere79
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere80
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere81
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere82
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere83
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere84
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere85
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere86
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere87
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere88
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere89
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere90
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere91
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere92
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere93
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere94
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere95
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere96
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere97
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere98
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere99
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere100
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere101
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere102
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere103
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere104
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere105
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere106
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere107
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere108
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere109
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere110
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere111
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere112
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere113
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere114
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere115
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere116
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere117
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere118
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere119
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere120
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere121
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere122
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere123
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere124
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere125
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere126
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere127
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere128
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere129
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere130
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere131
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere132
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere133
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere134
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere135
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere136
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere137
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere138
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere139
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere140
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere141
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere142
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere143
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere144
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere145
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere146
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere147
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere148
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere149
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere150
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere151
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere152
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere153
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere154
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere155
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere156
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere157
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere158
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere159
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere160
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere161
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere162
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere163
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere164
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere165
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere166
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere167
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere168
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere169
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere170
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere171
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere172
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere173
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere174
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere175
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere176
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere177
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere178
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere179
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere180
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere181
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere182
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere183
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere184
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere185
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere186
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere187
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere188
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere189
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere190
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere191
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere192
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere193
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere194
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere195
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere196
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere197
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere198
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere199
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere200
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere201
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere202
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere203
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere204
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere205
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere206
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere207
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere208
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere209
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere210
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere212
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere213
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere214
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere215
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere216
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere217
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere218
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere219
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere220
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere221
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere222
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere223
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere224
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere225
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere226
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere227
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere228
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere229
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere230
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere231
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere232
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere233
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere234
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere235
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere236
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere237
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere238
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere239
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere240
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere241
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere242
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere243
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere244
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere245
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere246
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere247
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere248
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere249
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere250
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere251
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere252
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere253
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere254
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere255
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere256
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere257
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere258
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere259
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere260
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere261
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere262
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere263
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere264
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere265
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere266
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere267
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere268
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere269
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere270
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere271
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere272
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere273
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere274
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere275
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere276
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere277
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere278
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere279
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere280
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere281
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere282
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere283
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere284
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere285
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere286
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere287
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere288
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere289
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere290
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere291
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere292
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere293
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere294
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere295
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere296
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere297
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere298
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere299
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere300
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere301
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere302
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere303
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere304
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere305
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere306
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere307
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere308
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere309
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere310
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere311
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere312
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere313
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere314
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere315
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere316
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere317
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere318
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere319
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere320
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere321
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere322
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere323
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere324
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere325
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere326
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere327
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere328
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere329
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere330
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere331
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere332
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere333
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere334
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere335
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere336
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere337
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere338
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere339
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere340
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere341
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere342
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere343
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere344
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere345
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere346
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere347
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere348
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere349
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere350
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere351
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere352
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere353
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere354
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere355
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere356
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere357
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere358
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere359
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere360
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere361
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere362
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere363
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere364
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere365
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere366
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere367
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere368
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere369
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere370
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere371
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere372
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere373
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere374
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere375
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere376
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere377
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere378
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere379
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere380
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere381
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere382
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere383
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere384
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere385
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere386
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere387
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere388
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere389
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere390
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere391
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere392
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere393
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere394
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere395
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere396
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  89
+		num normals        :  89
+		num uvs            :  178
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  Sphere397
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  84
+		num normals        :  84
+		num uvs            :  168
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  Sphere398
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere399
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere400
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere401
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere402
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere403
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere404
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere405
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere406
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere407
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere408
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere409
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere410
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere411
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere412
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere413
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere414
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere415
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere416
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere417
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere418
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere419
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere420
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere421
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere422
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere423
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere424
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere425
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere426
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere427
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere428
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere429
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere430
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere431
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere432
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere433
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere434
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere435
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere436
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere437
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere438
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere439
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere440
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere441
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere442
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere443
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere444
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere445
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere446
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere447
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere448
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere449
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere450
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere451
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere452
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere453
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere454
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere455
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere456
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere457
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere458
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere459
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere460
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere461
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere462
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere463
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere464
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere465
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere466
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere467
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere468
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere469
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere470
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere471
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere472
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere473
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere474
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere475
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere476
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere477
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere478
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere479
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere480
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere481
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere482
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere483
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere484
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere485
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere486
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere487
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere488
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere489
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere490
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere491
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere492
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere493
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere494
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere495
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere496
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere497
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere498
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+	processing begun of mesh:  Sphere499
+		registered as also a user of material:  wire_087225198.002
+		num positions      :  178
+		num normals        :  178
+		num uvs            :  356
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  720
+========= Writing of scene file started =========
+========= Writing of scene file completed =========
+========= end of processing =========
+elapsed time:  0 min, 11.1953 secs

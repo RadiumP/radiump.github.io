@@ -1,0 +1,140 @@
+	Exporter version: 4.6.1, Blender version: 2.78 (sub 0)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used:
+		selected layers only:  false
+		flat shading entire scene:  false
+		inline textures:  false
+		texture directory:  C:\Project\Babylon\
+	Python World class constructor completed
+	processing begun of mesh:  Wood(Floor)
+		processing begun of Standard material:  Mat
+		num positions      :  3969
+		num normals        :  3969
+		num uvs            :  7938
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  21600
+	processing begun of node:  Seat
+	processing begun of node:  Arm and Bottom
+	processing begun of mesh:  Sweep NURBS.1
+		processing begun of Standard material:  Mat.1
+		processing begun of Standard material:  Mat.3
+		processing begun of multimaterial:  sofa.Multimaterial#0
+		num positions      :  21770
+		num normals        :  21770
+		num uvs            :  43540
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  123264
+	processing begun of mesh:  Cube.2.4
+		registered as also a user of material:  Mat.1
+		processing begun of Standard material:  Mat.2
+		registered as also a user of material:  Mat.3
+		processing begun of multimaterial:  sofa.Multimaterial#1
+		num positions      :  15
+		num normals        :  15
+		num uvs            :  30
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  30
+	processing begun of node:  Cushions
+	processing begun of mesh:  Cube.2.3
+		registered as also a user of material:  Mat.2
+		num positions      :  7270
+		num normals        :  7270
+		num uvs            :  14540
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36864
+	processing begun of mesh:  Cube.2.2
+		registered as also a user of material:  Mat.2
+		num positions      :  7270
+		num normals        :  7270
+		num uvs            :  14540
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36864
+	processing begun of mesh:  Cube.3.2
+		registered as also a user of material:  Mat.2
+		num positions      :  18897
+		num normals        :  18897
+		num uvs            :  37794
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  98718
+	processing begun of mesh:  Cube.1.2
+		registered as also a user of material:  Mat.2
+		num positions      :  5360
+		num normals        :  5360
+		num uvs            :  10720
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  26253
+	processing begun of node:  Pillows
+	processing begun of mesh:  Cube.2
+		registered as also a user of material:  Mat.2
+		num positions      :  7272
+		num normals        :  7272
+		num uvs            :  14544
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36864
+	processing begun of mesh:  Cube
+		registered as also a user of material:  Mat.2
+		num positions      :  7272
+		num normals        :  7272
+		num uvs            :  14544
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36864
+	processing begun of mesh:  Cube.1
+		registered as also a user of material:  Mat.2
+		num positions      :  7272
+		num normals        :  7272
+		num uvs            :  14544
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36864
+	processing begun of mesh:  Cube.3
+		registered as also a user of material:  Mat.2
+		num positions      :  7272
+		num normals        :  7272
+		num uvs            :  14544
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36864
+	processing begun of mesh:  Cube.4
+		registered as also a user of material:  Mat.2
+		num positions      :  7272
+		num normals        :  7272
+		num uvs            :  14544
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36864
+	processing begun of mesh:  Cube.5
+		registered as also a user of material:  Mat.2
+		num positions      :  7274
+		num normals        :  7274
+		num uvs            :  14548
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36864
+	processing begun of mesh:  Cube.6
+		registered as also a user of material:  Mat.2
+		num positions      :  7274
+		num normals        :  7274
+		num uvs            :  14548
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36864
+	processing begun of node:  Illumination
+	processing begun of node:  Light.Target.1
+	processing begun of node:  Null
+	processing begun of camera (FreeCamera):  Camera
+	processing begun of light (SPOT):  Light
+	processing begun of light (SPOT):  Light.1
+	processing begun of light (POINT):  Lamp
+========= Writing of scene file started =========
+========= Writing of scene file completed =========
+========= end of processing =========
+elapsed time:  0 min, 6.5692 secs

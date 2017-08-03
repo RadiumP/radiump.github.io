@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Babylon - Load Asset</title>
+        <link rel='stylesheet' href="css/style.css">
+        <script src="js/babylon.js" ></script>
+        <!--pointer event-->
+<!--        <script src="js/hand.js"></script>-->
+        <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script> 
+
+   </head>
+
+   <body>
+       <canvas id="renderCanvas"></canvas>
+      <script>
+           var canvas = document.getElementById("renderCanvas");
+           var engine = new BABYLON.Engine(canvas, true);
+           
+           var createScene = function(){
+               var scene = new BABYLON.Scene(engine);
+               
+               scene.clearColor = new BABYLON.Color3(1, 1, 1);
+               
+               
+               //cam
+               var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
+               camera.setTarget(BABYLON.Vector3.Zero());
+               camera.attachControl(canvas, false);
+               
+               // light1 
+               var light = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -2, 0), scene);
+               light.position = new BABYLON.Vector3(20, 40, 20);
+               light.intensity = 1.5;
+
+               
+               var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
+               
+               sphere.position.y = 1;
+               
+               var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
+               ground.receiveShadows = true;
+               
+               
+               // Shadows
+               var shadowGenerator = new BABYLON.ShadowGenerator(8192, light);
+               shadowGenerator.getShadowMap().renderList.push(sphere);
+               shadowGenerator.useBlurExponentialShadowMap  = true;
+               
+               
+               
+               return scene;               
+               
+           };
+           
+           
+           var scene = createScene();
+           
+           engine.runRenderLoop(function (){
+              scene.render(); 
+           });
+           
+           window.addEventListener("resize", function(){
+              engine.resize(); 
+           });
+    
+       
+       </script>
+   </body>
+</html>

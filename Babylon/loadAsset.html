@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Babylon - 3D Viewer</title>
+        <link rel='stylesheet' href="css/style.css">
+        <script src="js/babylon.js" ></script>
+        <!--pointer event-->
+<!--        <script src="js/hand.js"></script>-->
+        <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script> 
+
+   </head>
+
+   <body>
+       <canvas id="renderCanvas"></canvas>
+       <script>
+           var canvas = document.getElementById("renderCanvas");
+           var engine = new BABYLON.Engine(canvas, true); 
+           
+           
+           //!!!CANNOT LOAD TEXTURE AT THIS POINT, NEED LOCAOL FILE/ LOAD FROM SERVER(DON'T KNOW HOW TO DO THAT YET)
+           BABYLON.SceneLoader.Load("models/","armchair.babylon",engine, function(scene){
+               
+               
+               scene.clearColor = new BABYLON.Color3(0/255, 90/255, 49/255);
+           
+               //disable default light               
+               //scene.lights[0].dispose();
+               
+               //disable all
+               //scene.dispose();
+               
+               //Free Cam: FPS like cam
+               //var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0, 1, -15), scene);            
+
+//               //Arc Rot: rotate around a pivot
+//               var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 1, 1, 10, new BABYLON.Vector3(0, 1, 0), scene);
+//
+//               camera.setPosition(new BABYLON.Vector3(0, 3, -3));
+//              
+//                     
+//
+//               scene.activeCamera = camera;
+//               camera.attachControl(canvas);
+//               
+//               //camera settings: no pan, wheel speed, rotation angle
+//               camera.panningSensibility = 0;
+//               camera.wheelPrecision  = 75;
+//               camera.lowerBetaLimit = 0;
+//               camera.upperBetaLimit = 1.4;
+               
+               var camera = setCamera(scene, canvas);
+               
+               
+               //light models
+               
+               var camLight = new BABYLON.DirectionalLight("Dir0", new BABYLON.Vector3(0, 0, 1), scene);
+               camLight.parent = camera;
+               camLight.intensity = 0.8;
+               
+             
+               
+               
+               var topLight = new BABYLON.DirectionalLight("Dir1", new BABYLON.Vector3(0, -3, 0), scene);
+               
+               topLight.intensity = 0.8;
+               topLight.position = new BABYLON.Vector3(20, 40, 20);
+                         
+               
+               
+              
+               
+               
+               var sphere = BABYLON.Mesh.CreateSphere("Sphere1", 10.0, 0.2, scene);
+               sphere.position.x = 1.0;
+               sphere.position.y = 0.2;
+               sphere.position.z = 0.5;
+               //sphere.receiveShadows = true;
+               
+               
+               //shadows    
+               var shadowGenerator = new BABYLON.ShadowGenerator(8192, topLight);//the number is to control shadow quality
+               //shadowGenerator.getShadowMap().renderList.push(scene.meshes[9]);    
+               
+               scene.meshes.forEach(function(mesh) {
+                   shadowGenerator.getShadowMap().renderList.push(mesh);
+                   shadowGenerator.useBlurExponentialShadowMap = true;//shadow settings
+               });
+              
+
+               
+               
+               //Put ground out of the shadowMap List.(Won't receive shadow if in).
+               var ground = BABYLON.Mesh.CreateGround("ground", 6, 6, 2, scene);
+               //ground.rotation.x = Math.PI/2;
+               ground.receiveShadows = true;
+               
+               var materialGround = new BABYLON.StandardMaterial("floorTex", scene);
+               materialGround.ambientTexture = new BABYLON.Texture("textures/wood.jpg", scene);
+               ground.material = materialGround;
+               
+               
+               
+               //debug layer               
+               //scene.debugLayer.show();
+               
+               //render
+               engine.runRenderLoop(function (){
+                   scene.render(); 
+                   //console.log(camera.radius);
+                   
+                   //limit the zoom
+                   if(camera.radius > 7)camera.radius = 7;
+                   else if(camera.radius < 4)camera.radius = 4;
+                   
+                   
+                   //change camLight intensity
+                   if(camera.beta < 0.3)camLight.intensity = 0.2;
+                   else camLight.intensity = 0.8
+               });
+                  
+               
+           });
+           
+          
+           
+           
+           
+           //resize
+           window.addEventListener("resize", function(){
+              engine.resize(); 
+           });
+           
+           
+           
+           //Camera Function
+           var setCamera = function( scene, canvas){
+               //Arc Rot: rotate around a pivot
+               var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 1, 1, 10, new BABYLON.Vector3(0, 1, 0), scene);
+
+               camera.setPosition(new BABYLON.Vector3(0, 3, -3));
+              
+                     
+
+               scene.activeCamera = camera;
+               camera.attachControl(canvas);
+               
+               //camera settings: no pan, wheel speed, rotation angle
+               camera.panningSensibility = 0;
+               camera.wheelPrecision  = 75;
+               camera.lowerBetaLimit = 0;
+               camera.upperBetaLimit = 1.4;
+               
+               return camera;
+           };
+           
+           
+    
+       
+       </script>
+   </body>
+
+</html>
