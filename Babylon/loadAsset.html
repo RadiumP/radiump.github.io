@@ -8,7 +8,7 @@
         <!--pointer event-->
 <!--        <script src="js/hand.js"></script>-->
         <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script> 
-
+        <script src = "js/dat.gui.js"></script>
    </head>
 
    <body>
@@ -17,21 +17,49 @@
            var canvas = document.getElementById("renderCanvas");
            var engine = new BABYLON.Engine(canvas, true); 
            
+           var startTimer = Date.now();
+           
+           var toplightIntensity = 0.8;
+           
+           
+           //set dat gui
+           var viewerCtrl = function() {
+               this.lightIntensity = toplightIntensity;
+               //this.camlightIntensity = 0.8;
+               
+               
+           };
+           
+           
+               
+           var gui = new dat.GUI();
+           var menu = new viewerCtrl();
+           var controller = gui.add(menu, 'lightIntensity', 0, 1.5);
+           
+           
+           controller.onChange(function(value){
+               toplightIntensity = value;
+           });
+           
+           
            
            //!!!CANNOT LOAD TEXTURE AT THIS POINT, NEED LOCAOL FILE/ LOAD FROM SERVER(DON'T KNOW HOW TO DO THAT YET)
            BABYLON.SceneLoader.Load("models/","armchair.babylon",engine, function(scene){
                
-               
+               //init bg color
                scene.clearColor = new BABYLON.Color3(0/255, 90/255, 49/255);
            
-               //disable default light               
-               //scene.lights[0].dispose();
+               //disable default lights 
+               
+               if(scene.lights.length > 0){
+                   for(var i = 0; i < scene.lights.length; i++)
+                   scene.lights[i].dispose();
+               }
                
                //disable all
                //scene.dispose();
                
-               //Free Cam: FPS like cam
-               //var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0, 1, -15), scene);            
+                    
 
 //               //Arc Rot: rotate around a pivot
 //               var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 1, 1, 10, new BABYLON.Vector3(0, 1, 0), scene);
@@ -63,7 +91,7 @@
                
                var topLight = new BABYLON.DirectionalLight("Dir1", new BABYLON.Vector3(0, -3, 0), scene);
                
-               topLight.intensity = 0.8;
+               topLight.intensity = this.toplightIntensity;
                topLight.position = new BABYLON.Vector3(20, 40, 20);
                          
                
@@ -100,6 +128,7 @@
                ground.material = materialGround;
                
                
+               console.log("Load time(ms): ", Date.now() - startTimer);
                
                //debug layer               
                //scene.debugLayer.show();
@@ -117,6 +146,9 @@
                    //change camLight intensity
                    if(camera.beta < 0.3)camLight.intensity = 0.2;
                    else camLight.intensity = 0.8
+                   
+                   //change topLight intensity
+                   topLight.intensity = toplightIntensity;
                });
                   
                
