@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Babylon - 3D Viewer</title>
+        <link rel='stylesheet' href="css/style.css">
+        <script src="js/babylon.js" ></script>
+        <!--pointer event-->
+<!--        <script src="js/hand.js"></script>-->
+        <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script> 
+        <script src = "js/dat.gui.js"></script>
+   </head>
+
+   <body>
+       <canvas id="renderCanvas"></canvas>
+       <script>
+           var canvas = document.getElementById("renderCanvas");
+           var engine = new BABYLON.Engine(canvas, true); 
+           
+           var startTimer = Date.now();
+           
+           var toplightIntensity = 0.8;
+           
+           var model = "armchair.babylon";
+           
+           
+           //set dat gui
+           var viewerCtrl = function() {
+               this.lightIntensity = toplightIntensity;
+               //this.camlightIntensity = 0.8;
+               this.models = model;
+               
+           };
+           
+           
+               
+           var gui = new dat.GUI();           
+           var menu = new viewerCtrl();
+           
+           var lightCtrl = gui.add(menu, 'lightIntensity', 0, 1.5);
+                
+           
+           lightCtrl.onChange(function(value){
+               toplightIntensity = value;
+           });
+           
+           var modelCtrl = gui.add(menu, 'models', ['sofa', 'chair', 'armchair']);
+           
+           
+           
+
+           
+           
+           var camLight, topLight, camera;
+           
+           
+           var createScene = function () {
+               
+               var scene = new BABYLON.Scene(engine);
+               
+               //init bg color
+               scene.clearColor = new BABYLON.Color3(0/255, 90/255, 49/255);
+               
+               
+               //disable default lights 
+               
+               if(scene.lights.length > 0){
+                   for(var i = 0; i < scene.lights.length; i++)
+                   scene.lights[i].dispose();
+               }
+               
+               modelCtrl.onChange(function(value){
+               if(value === 'sofa') model = "sofa.babylon";
+               else if(value === 'chair') model = "chair.babylon";
+               else if(value === 'armchair') {
+                   model = "armchair.babylon";
+                   removeModel(scene);
+                   //BABYLON.SceneLoader.ImportMesh("", "models/", "armchair.babylon", scene);
+               }
+               });
+               
+               
+               
+               
+                camera = createCamera(scene, canvas);
+               
+                camLight = createCamLight(scene, camera);  
+               
+                topLight = createTopLight(scene);           
+           
+             
+              
+               
+               //no shadow???
+               //scene.executeWhenReady(addModel(scene, topLight));
+               
+               
+                    
+               
+               return scene;
+               
+           };
+           
+           
+           //createCamera
+           
+           var createCamera = function (scene, canvas){
+               //Arc Rot: rotate around a pivot
+               var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 1, 1, 10, new BABYLON.Vector3(0, 1, 0), scene);
+
+               camera.setPosition(new BABYLON.Vector3(0, 3, -3));
+              
+                     
+
+               scene.activeCamera = camera;
+               camera.attachControl(canvas);
+               
+               //camera settings: no pan, wheel speed, rotation angle
+               camera.panningSensibility = 0;
+               camera.wheelPrecision  = 75;
+               camera.lowerBetaLimit = 0;
+               camera.upperBetaLimit = 1.4;
+               
+               
+               return camera;
+               
+           };
+           
+           
+           //light models
+           
+           var createCamLight = function (scene, camera){
+               
+               //light models
+               var camLight = new BABYLON.DirectionalLight("Dir0", new BABYLON.Vector3(0, 0, 1), scene);
+               camLight.parent = camera;
+               camLight.intensity = 0.8;  
+             
+               return camLight;
+           };
+           
+           
+           var createTopLight = function (scene){                
+            
+               var topLight = new BABYLON.DirectionalLight("Dir1", new BABYLON.Vector3(0, -3, 0), scene);            
+               topLight.intensity = this.toplightIntensity;
+               topLight.position = new BABYLON.Vector3(20, 40, 20);  
+               
+               return topLight;
+           };
+           
+           
+           
+           
+           
+          
+         
+          
+           
+           //remove loaded meshes
+           
+           var removeModel = function (scene){
+               while(scene.meshes.length > 0){
+                   scene.meshes.forEach(function(mesh) {
+                       
+                       //if(mesh.id === "ground"){continue;}
+                       mesh.dispose();
+
+                   });
+               } 
+               console.log(scene.meshes);
+           };
+           
+           //load new meshes
+           var loadMeshes = function (name){
+               //shadows           
+               var shadowGenerator = new BABYLON.ShadowGenerator(8192, topLight);//the number is to control shadow quality        
+           
+               //load mesh
+               
+               BABYLON.SceneLoader.ImportMesh("", "models/", name, scene, function(meshes){
+                   meshes.forEach(function(mesh){
+                       shadowGenerator.getShadowMap().renderList.push(mesh);
+                       shadowGenerator.useBlurExponentialShadowMap = true;//shadow settings
+                       //shadowGenerator.usePoissonSampling  = true; 
+                       //shadowGenerator.useBlurExponentialShadowMap = true;
+                       //shadowGenerator.usePoissonSampling  = true;
+                   });
+               });  
+               
+               
+           };
+            
+           
+             
+           
+           
+           
+           //main function
+           var scene = createScene();             
+           
+           var name = "armchair.babylon";
+           loadMeshes(name);
+           
+           
+           //Floor
+           var ground = BABYLON.Mesh.CreateGround("ground", 6, 6, 2, scene); 
+           //ground.rotation.x = Math.PI/2;        
+           
+           
+           var materialGround = new BABYLON.StandardMaterial("floorTex", scene);     
+           materialGround.ambientTexture = new BABYLON.Texture("textures/wood.jpg", scene);  
+           ground.material = materialGround;
+           ground.receiveShadows = true;       
+           
+           
+           
+           console.log("Load time(ms): ", Date.now() - startTimer);
+           
+           //render
+           engine.runRenderLoop(function (){
+                   scene.render(); 
+                   //console.log(camera.radius);
+                   
+                   //limit the zoom
+                   if(camera.radius > 7)camera.radius = 7;
+                   else if(camera.radius < 4)camera.radius = 4;
+                   
+                   
+                   //change camLight intensity
+                   if(camera.beta < 0.3)camLight.intensity = 0.2;
+                   else camLight.intensity = 0.8
+                   
+                   //change topLight intensity
+                   topLight.intensity = toplightIntensity;
+                   
+               });
+           
+           
+           
+           //resize
+           window.addEventListener("resize", function(){
+              engine.resize(); 
+           });
+           
+           
+           
+  
+    
+       
+       </script>
+   </body>
+
+</html>

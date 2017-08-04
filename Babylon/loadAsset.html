@@ -21,30 +21,35 @@
            
            var toplightIntensity = 0.8;
            
+           var model = "armchair.babylon";
+           
            
            //set dat gui
            var viewerCtrl = function() {
                this.lightIntensity = toplightIntensity;
                //this.camlightIntensity = 0.8;
-               
+               this.models = model;
                
            };
            
            
                
-           var gui = new dat.GUI();
+           var gui = new dat.GUI();           
            var menu = new viewerCtrl();
-           var controller = gui.add(menu, 'lightIntensity', 0, 1.5);
            
+           var lightCtrl = gui.add(menu, 'lightIntensity', 0, 1.5);
+                
            
-           controller.onChange(function(value){
+           lightCtrl.onChange(function(value){
                toplightIntensity = value;
            });
+           
+           var modelCtrl = gui.add(menu, 'models', ['sofa', 'chair', 'armchair']);
            
            
            
            //!!!CANNOT LOAD TEXTURE AT THIS POINT, NEED LOCAOL FILE/ LOAD FROM SERVER(DON'T KNOW HOW TO DO THAT YET)
-           BABYLON.SceneLoader.Load("models/","armchair.babylon",engine, function(scene){
+           BABYLON.SceneLoader.Load("models/", model, engine, function(scene){
                
                //init bg color
                scene.clearColor = new BABYLON.Color3(0/255, 90/255, 49/255);
@@ -55,6 +60,17 @@
                    for(var i = 0; i < scene.lights.length; i++)
                    scene.lights[i].dispose();
                }
+               
+               modelCtrl.onChange(function(value){
+               if(value === 'sofa') model = "sofa.babylon";
+               else if(value === 'chair') model = "chair.babylon";
+               else if(value === 'armchair') {
+                   model = "armchair.babylon";
+                   removeModel(scene);
+                   //BABYLON.SceneLoader.ImportMesh("", "models/", "armchair.babylon", scene);
+               }
+           });
+               
                
                //disable all
                //scene.dispose();
@@ -149,6 +165,7 @@
                    
                    //change topLight intensity
                    topLight.intensity = toplightIntensity;
+                   
                });
                   
                
@@ -186,7 +203,15 @@
                return camera;
            };
            
+           //remove loaded meshes
            
+           var removeModel = function (scene){
+               scene.meshes.forEach(function(mesh) {
+                   //scene.dispose();
+               });
+                
+               
+           };
     
        
        </script>
