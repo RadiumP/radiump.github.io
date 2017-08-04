@@ -71,11 +71,15 @@
                
                modelCtrl.onChange(function(value){
                if(value === 'sofa') model = "sofa.babylon";
-               else if(value === 'chair') model = "chair.babylon";
+               else if(value === 'chair') {
+                   model = "chair.babylon";
+                   removeModel(scene);
+                   loadMeshes(model, scene);
+               }
                else if(value === 'armchair') {
                    model = "armchair.babylon";
                    removeModel(scene);
-                   //BABYLON.SceneLoader.ImportMesh("", "models/", "armchair.babylon", scene);
+                   loadMeshes(model, scene);
                }
                });
                
@@ -160,21 +164,27 @@
            //remove loaded meshes
            
            var removeModel = function (scene){
-               while(scene.meshes.length > 0){
-                   scene.meshes.forEach(function(mesh) {
-                       
-                       //if(mesh.id === "ground"){continue;}
-                       mesh.dispose();
-
-                   });
-               } 
-               console.log(scene.meshes);
+               var i = 0;
+               var meshes = [];
+               scene.getMeshesByTags("Loaded", function(mesh) {                    
+                    //if(mesh)mesh.dispose();//mesh = null;
+                   meshes.push(mesh);
+                   //console.log();
+               });
+               
+               //
+               meshes.forEach(function(mesh){
+                   mesh.dispose();
+                   mesh = null;
+               });
+            
+               
            };
            
            //load new meshes
-           var loadMeshes = function (name){
+           var loadMeshes = function (name, scene){
                //shadows           
-               var shadowGenerator = new BABYLON.ShadowGenerator(8192, topLight);//the number is to control shadow quality        
+               var shadowGenerator = new BABYLON.ShadowGenerator(1024, topLight);//the number is to control shadow quality        
            
                //load mesh
                
@@ -185,7 +195,12 @@
                        //shadowGenerator.usePoissonSampling  = true; 
                        //shadowGenerator.useBlurExponentialShadowMap = true;
                        //shadowGenerator.usePoissonSampling  = true;
+                       
+                       //add tag
+                       BABYLON.Tags.EnableFor(mesh);
+                       mesh.addTags("Loaded");
                    });
+                   
                });  
                
                
@@ -199,8 +214,8 @@
            //main function
            var scene = createScene();             
            
-           var name = "armchair.babylon";
-           loadMeshes(name);
+           var name = "chair.babylon";
+           loadMeshes(name, scene);
            
            
            //Floor
