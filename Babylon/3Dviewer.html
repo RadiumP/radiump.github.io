@@ -28,7 +28,7 @@
            var viewerCtrl = function() {
                this.lightIntensity = toplightIntensity;
                //this.camlightIntensity = 0.8;
-               this.models = model;
+               this.models = "chair";
                
            };
            
@@ -44,7 +44,7 @@
                toplightIntensity = value;
            });
            
-           var modelCtrl = gui.add(menu, 'models', ['sofa', 'chair', 'armchair']);
+           var modelCtrl = gui.add(menu, 'models', ['chair', 'armchair']);
            
            
            
@@ -70,8 +70,8 @@
                }
                
                modelCtrl.onChange(function(value){
-               if(value === 'sofa') model = "sofa.babylon";
-               else if(value === 'chair') {
+               
+               if(value === 'chair') {
                    model = "chair.babylon";
                    removeModel(scene);
                    loadMeshes(model, scene);
@@ -239,7 +239,7 @@
                    
                    //limit the zoom
                    if(camera.radius > 7)camera.radius = 7;
-                   else if(camera.radius < 4)camera.radius = 4;
+                   else if(camera.radius < 1)camera.radius = 1;
                    
                    
                    //change camLight intensity
