@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | 3DViewerServer</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>  
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/demov1.15(2017)webgl2.0.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+       <button onclick="Chair()">Chair Model</button>
+        <button onclick="Couch()">Couch Model</button>
+        <button onclick="ChangeTexture(0)">Part 1 Text</button>
+        <button onclick="ChangeTexture(1)">Part 2 Text</button>
+
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div class="title">3DViewerServer</div>
+      </div>
+    </div>
+       <script>
+        function Chair() {
+            gameInstance.SendMessage('ModelHandler', 'ChangeModel', 'etcchair');
+
+        }
+
+        function Couch() {
+
+            gameInstance.SendMessage('ModelHandler', 'ChangeModel','bstsofa');
+
+        }
+		
+		function ChangeTexture(part){
+            var array = part +"_#SEPERATOR_"+1;
+		            gameInstance.SendMessage('ModelHandler', 'ChangeTexture_Server', array);
+
+		}
+
+    </script>
+  </body>
+</html>
