@@ -1,4 +1,4 @@
-﻿THREE.Ocean = function ( renderer, camera, scene, options ) {
+THREE.Ocean = function ( renderer, camera, scene, options ) {
 
 	// flag used to trigger parameter changes
 	this.changed = true;
@@ -120,7 +120,7 @@
 	var initialSpectrumUniforms = THREE.UniformsUtils.clone( initialSpectrumShader.uniforms );
 	this.materialInitialSpectrum = new THREE.ShaderMaterial( {
 		uniforms: initialSpectrumUniforms,
-		vertexShader: fullscreeenVertexShader.vertexShader,
+		vertexShader: initialSpectrumShader.vertexShader,
 		fragmentShader: initialSpectrumShader.fragmentShader
 	} );
 	this.materialInitialSpectrum.uniforms.u_wind = { value: new THREE.Vector2() };

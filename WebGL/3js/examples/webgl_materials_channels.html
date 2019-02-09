@@ -34,8 +34,8 @@
 	<body>
 
 		<div id="info">
-			<a href="http://threejs.org" target="_blank">three.js</a> - <span id="description">Normal, Depth, DepthRGBA, DepthRGBAUnpacked, Materials</span> by <a href="https://Clara.io">Ben Houston</a>.<br />
-			ninja head from <a href="http://developer.amd.com/tools-and-sdks/archive/legacy-cpu-gpu-tools/amd-gpu-meshmapper/" target="_blank">AMD GPU MeshMapper</a>
+			<a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - <span id="description">Normal, Depth, DepthRGBA, DepthRGBAUnpacked, Materials</span> by <a href="https://Clara.io">Ben Houston</a>.<br />
+			ninja head from <a href="http://developer.amd.com/tools-and-sdks/archive/legacy-cpu-gpu-tools/amd-gpu-meshmapper/" target="_blank" rel="noopener">AMD GPU MeshMapper</a>
 
 			<div id="vt">displacement mapping requires vertex textures</div>
 		</div>
@@ -45,17 +45,21 @@
 
 		<script src="js/loaders/OBJLoader.js"></script>
 
-		<script src="js/Detector.js"></script>
+		<script src="js/WebGL.js"></script>
 		<script src="js/libs/stats.min.js"></script>
 		<script src='js/libs/dat.gui.min.js'></script>
 
 		<script>
 
-			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+			if ( WEBGL.isWebGLAvailable() === false ) {
+
+				document.body.appendChild( WEBGL.getWebGLErrorMessage() );
+
+			}
 
 			var stats;
 
-			var camera, scene, renderer, controls;
+			var camera, scene, renderer;
 
 			var params = {
 				material: 'normal',
@@ -63,12 +67,16 @@
 				side: 'double'
 			};
 
+			var sides = {
+				'front': THREE.FrontSide,
+				'back': THREE.BackSide,
+				'double': THREE.DoubleSide
+			};
+
 			var cameraOrtho, cameraPerspective;
 			var controlsOrtho, controlsPerspective;
 
 			var mesh, materialStandard, materialDepthBasic, materialDepthRGBA, materialNormal;
-
-			var pointLight, ambientLight;
 
 			var height = 500; // of camera frustum
 
@@ -86,6 +94,7 @@
 				gui.add( params, 'material', [ 'standard', 'normal', 'depthBasic', 'depthRGBA' ] );
 				gui.add( params, 'camera', [ 'perspective', 'ortho' ] );
 				gui.add( params, 'side', [ 'front', 'back', 'double' ] );
+
 			}
 
 			function init() {
@@ -166,7 +175,7 @@
 					normalMap: normalMap,
 					normalScale: new THREE.Vector2( 1, - 1 ),
 
-					//shading: THREE.FlatShading,
+					//flatShading: true,
 
 					side: THREE.DoubleSide
 				} );
@@ -199,7 +208,7 @@
 					normalMap: normalMap,
 					normalScale: new THREE.Vector2( 1, - 1 ),
 
-					//shading: THREE.FlatShading,
+					//flatShading: true,
 
 					side: THREE.DoubleSide
 				} );
@@ -209,7 +218,7 @@
 				var loader = new THREE.OBJLoader();
 				loader.load( "models/obj/ninja/ninjaHead_Low.obj", function ( group ) {
 
-					geometry = group.children[ 0 ].geometry;
+					var geometry = group.children[ 0 ].geometry;
 					geometry.attributes.uv2 = geometry.attributes.uv;
 					geometry.center();
 
@@ -256,9 +265,6 @@
 
 				requestAnimationFrame( animate );
 
-				controlsOrtho.update();
-				controlsPerspective.update();
-
 				stats.begin();
 				render();
 				stats.end();
@@ -280,7 +286,7 @@
 
 					}
 
-					if ( params.side !== material.side ) {
+					if ( sides[ params.side ] !== material.side ) {
 
 						switch ( params.side ) {
 

@@ -44,7 +44,7 @@
 
 			var gui = new dat.GUI();
 			var scene = new THREE.Scene();
-			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 50 );
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 10, 50 );
 			camera.position.z = 30;
 
 			var renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -71,14 +71,13 @@
 
 			guiScene( gui, scene, camera );
 
-			var geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 16 );
-			var mesh = new THREE.Mesh( geometry );
+			var geometry = new THREE.TorusKnotBufferGeometry( 10, 3, 100, 16 );
+			geometry = geometry.toNonIndexed();
 
 			generateVertexColors( geometry );
 
+			var mesh = new THREE.Mesh( geometry );
 			mesh.material = chooseFromHash( gui, mesh, geometry );
-
-			generateMorphTargets( mesh, geometry );
 
 			scene.add( mesh );
 
@@ -97,12 +96,6 @@
 
 					mesh.material.needsUpdate = true;
 					prevFog = scene.fog;
-
-				}
-
-				if ( mesh.morphTargetInfluences ) {
-
-					mesh.morphTargetInfluences[ 0 ] = ( 1 + Math.sin( 4 * time ) ) / 2;
 
 				}
 

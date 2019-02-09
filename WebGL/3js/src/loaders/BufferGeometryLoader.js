@@ -1,9 +1,9 @@
-import { Sphere } from '../math/Sphere';
-import { Vector3 } from '../math/Vector3';
-import { BufferAttribute } from '../core/BufferAttribute';
-import { BufferGeometry } from '../core/BufferGeometry';
-import { FileLoader } from './FileLoader';
-import { DefaultLoadingManager } from './LoadingManager';
+import { Sphere } from '../math/Sphere.js';
+import { Vector3 } from '../math/Vector3.js';
+import { BufferAttribute } from '../core/BufferAttribute.js';
+import { BufferGeometry } from '../core/BufferGeometry.js';
+import { FileLoader } from './FileLoader.js';
+import { DefaultLoadingManager } from './LoadingManager.js';
 
 /**
  * @author mrdoob / http://mrdoob.com/
@@ -22,6 +22,7 @@ Object.assign( BufferGeometryLoader.prototype, {
 		var scope = this;
 
 		var loader = new FileLoader( scope.manager );
+		loader.setPath( scope.path );
 		loader.load( url, function ( text ) {
 
 			onLoad( scope.parse( JSON.parse( text ) ) );
@@ -35,18 +36,6 @@ Object.assign( BufferGeometryLoader.prototype, {
 		var geometry = new BufferGeometry();
 
 		var index = json.data.index;
-
-		var TYPED_ARRAYS = {
-			'Int8Array': Int8Array,
-			'Uint8Array': Uint8Array,
-			'Uint8ClampedArray': Uint8ClampedArray,
-			'Int16Array': Int16Array,
-			'Uint16Array': Uint16Array,
-			'Int32Array': Int32Array,
-			'Uint32Array': Uint32Array,
-			'Float32Array': Float32Array,
-			'Float64Array': Float64Array
-		};
 
 		if ( index !== undefined ) {
 
@@ -96,11 +85,33 @@ Object.assign( BufferGeometryLoader.prototype, {
 
 		}
 
+		if ( json.name ) geometry.name = json.name;
+		if ( json.userData ) geometry.userData = json.userData;
+
 		return geometry;
+
+	},
+
+	setPath: function ( value ) {
+
+		this.path = value;
+		return this;
 
 	}
 
 } );
 
+var TYPED_ARRAYS = {
+	Int8Array: Int8Array,
+	Uint8Array: Uint8Array,
+	// Workaround for IE11 pre KB2929437. See #11440
+	Uint8ClampedArray: typeof Uint8ClampedArray !== 'undefined' ? Uint8ClampedArray : Uint8Array,
+	Int16Array: Int16Array,
+	Uint16Array: Uint16Array,
+	Int32Array: Int32Array,
+	Uint32Array: Uint32Array,
+	Float32Array: Float32Array,
+	Float64Array: Float64Array
+};
 
 export { BufferGeometryLoader };

@@ -1,53 +1,60 @@
 /**
- * @author alteredq / http://alteredqualia.com/
  * @author mrdoob / http://mrdoob.com/
- * @author Daosheng Mu / https://github.com/DaoshengMu/
+ * @author alteredq / http://alteredqualia.com/
+ * @author szimek / https://github.com/szimek/
  */
 
-THREE.ImageUtils = {
+var _canvas;
 
-	crossOrigin: undefined,
+var ImageUtils = {
 
-	loadTexture: function ( url, mapping, onLoad, onError ) {
+	getDataURL: function ( image ) {
 
-		console.warn( 'THREE.ImageUtils.loadTexture is being deprecated. Use THREE.TextureLoader() instead.' );
+		var canvas;
 
-		var loader = new THREE.TextureLoader();
-		loader.setCrossOrigin( this.crossOrigin );
+		if ( typeof HTMLCanvasElement == 'undefined' ) {
 
-		var texture = loader.load( url, onLoad, undefined, onError );
+			return image.src;
 
-		if ( mapping ) texture.mapping = mapping;
+		} else if ( image instanceof HTMLCanvasElement ) {
 
-		return texture;
+			canvas = image;
 
-	},
+		} else {
 
-	loadTextureCube: function ( urls, mapping, onLoad, onError ) {
+			if ( _canvas === undefined ) _canvas = document.createElementNS( 'http://www.w3.org/1999/xhtml', 'canvas' );
 
-		console.warn( 'THREE.ImageUtils.loadTextureCube is being deprecated. Use THREE.CubeTextureLoader() instead.' );
+			_canvas.width = image.width;
+			_canvas.height = image.height;
 
-		var loader = new THREE.CubeTextureLoader();
-		loader.setCrossOrigin( this.crossOrigin );
+			var context = _canvas.getContext( '2d' );
 
-		var texture = loader.load( urls, onLoad, undefined, onError );
+			if ( image instanceof ImageData ) {
 
-		if ( mapping ) texture.mapping = mapping;
+				context.putImageData( image, 0, 0 );
 
-		return texture;
+			} else {
 
-	},
+				context.drawImage( image, 0, 0, image.width, image.height );
 
-	loadCompressedTexture: function () {
+			}
 
-		console.error( 'THREE.ImageUtils.loadCompressedTexture has been removed. Use THREE.DDSLoader instead.' )
+			canvas = _canvas;
 
-	},
+		}
 
-	loadCompressedTextureCube: function () {
+		if ( canvas.width > 2048 || canvas.height > 2048 ) {
 
-		console.error( 'THREE.ImageUtils.loadCompressedTextureCube has been removed. Use THREE.DDSLoader instead.' )
+			return canvas.toDataURL( 'image/jpeg', 0.6 );
+
+		} else {
+
+			return canvas.toDataURL( 'image/png' );
+
+		}
 
 	}
 
 };
+
+export { ImageUtils };
