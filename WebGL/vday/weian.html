@@ -42,14 +42,14 @@
 
 		<script>
 
-			var addCube = function(scene,x,y,z,material)
+			var addCube = function(scene,x,z,y,material)
 			{
 				var geometry = new THREE.BoxGeometry( 10, 10, 10 );
 				// var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
 				var cube = new THREE.Mesh( geometry, material );
 				cube.position.x = x;
 				cube.position.y = y;
-				cube.position.y = z;
+				cube.position.z = z;
 				scene.add( cube );
 			}
 
@@ -83,7 +83,7 @@
 				}
 				for(var i = 0; i< 7;i++)
 				{
-					addCube(scene,(8 * cubesize + pos)*right, pos, pos + ((-2 - i) * cubesize),black);
+					addCube(scene,(8 * cubesize + pos)*right, pos*1, pos + ((-2 - i) * cubesize),black);
 				}
 
 				for(var i = 0; i< 4;i++)
@@ -96,7 +96,7 @@
 				}
 				for(var i = 0; i< 7;i++)
 				{
-					addCube(scene,(7 * cubesize + pos)*right, pos, pos + ((-2 - i) * cubesize),black);
+					addCube(scene,(7 * cubesize + pos)*right, pos*1.5, pos + ((-2 - i) * cubesize),black);
 				}
 				for(var i = 0; i< 3;i++)
 				{
@@ -104,11 +104,11 @@
 				}
 				for(var i = 0; i< 5;i++)
 				{
-					addCube(scene,(6 * cubesize + pos)*right, pos, pos + ((4 - i) * cubesize),black);
+					addCube(scene,(6 * cubesize + pos)*right, pos*0.5, pos + ((4 - i) * cubesize),black);
 				}
 				for(var i = 0; i< 7;i++)
 				{
-					addCube(scene,(6 * cubesize + pos)*right, pos, pos + ((-2 - i) * cubesize),black);
+					addCube(scene,(6 * cubesize + pos)*right, pos*2, pos + ((-2 - i) * cubesize),black);
 				}
 				for(var i = 0; i< 2;i++)
 				{
@@ -116,11 +116,11 @@
 				}
 				for(var i = 0; i< 6;i++)
 				{
-					addCube(scene,(5 * cubesize + pos)*right, pos, pos + ((5 - i) * cubesize),black);
+					addCube(scene,(5 * cubesize + pos)*right, pos*0, pos + ((5 - i) * cubesize),black);
 				}
 				for(var i = 0; i< 6;i++)
 				{
-					addCube(scene,(5 * cubesize + pos)*right, pos, pos + ((-3 - i) * cubesize),black);
+					addCube(scene,(5 * cubesize + pos)*right, pos*2.5, pos + ((-3 - i) * cubesize),black);
 				}
 
 				for(var i = 0; i< 1;i++)
@@ -129,30 +129,31 @@
 				}
 				for(var i = 0; i< 6;i++)
 				{
-					addCube(scene,(4 * cubesize + pos)*right, pos, pos + ((5 - i) * cubesize),black);
+					addCube(scene,(4 * cubesize + pos)*right, pos*(-0.5), pos + ((5 - i) * cubesize),black);
 				}
 				for(var i = 0; i< 4;i++)
 				{
-					addCube(scene,(4 * cubesize + pos)*right, pos, pos + ((-4 - i) * cubesize),black);
+					addCube(scene,(4 * cubesize + pos)*right, pos*3, pos + ((-4 - i) * cubesize),black);
 				}
 
 				addCube(scene,(3 * cubesize + pos)*right, pos, pos + ((11) * cubesize),black);
 				for(var i = 0; i< 2;i++)
 				{
-					addCube(scene,(3 * cubesize + pos)*right, pos, pos + ((5 - i) * cubesize),black);
+					addCube(scene,(3 * cubesize + pos)*right, pos*(-1), pos + ((5 - i) * cubesize),black);
 				}
-				addCube(scene,(3 * cubesize + pos)*right, pos, pos + ((1) * cubesize),black);
+				addCube(scene,(3 * cubesize + pos)*right, pos*(-1), pos + ((1) * cubesize),black);
 
 				addCube(scene,(2 * cubesize + pos)*right, pos, pos + ((11) * cubesize),black);
 				for(var i = 0; i< 3;i++)
 				{
-					addCube(scene,(2 * cubesize + pos)*right, pos, pos + ((4 - i) * cubesize),black);
+					addCube(scene,(2 * cubesize + pos)*right, pos*0, pos + ((4 - i) * cubesize),black);
 				}
 				addCube(scene,(1 * cubesize + pos)*right, pos, pos + ((11) * cubesize),black);
+
 				addCube(scene,(0 * cubesize + pos)*right, pos, pos + ((11) * cubesize),black);
 				for(var i = 0; i< 2;i++)
 				{
-					addCube(scene,(0 * cubesize + pos)*right, pos, pos + ((0 - i) * cubesize),black);
+					addCube(scene,(0 * cubesize + pos)*right, pos*3, pos + ((0 - i) * cubesize),black);
 				}
 
 			}
@@ -173,11 +174,11 @@
 				}
 				for(var i = 0; i< 8;i++)
 				{
-					addCube(scene,(1 * cubesize + pos)*right, pos*2, pos + ((-3 - i) * cubesize),red);
+					addCube(scene,(1 * cubesize + pos)*right, pos*4, pos + ((-3 - i) * cubesize),red);
 				}
 				for(var i = 0; i< 8;i++)
 				{
-					addCube(scene,(0 * cubesize + pos)*right, pos*20, pos + ((-4 - i) * cubesize),red);
+					addCube(scene,(0 * cubesize + pos)*right, pos*5, pos + ((-4 - i) * cubesize),red);
 				}
 			}
 
@@ -234,9 +235,9 @@
 
 				//
 
-				var helper = new THREE.GridHelper( 300, 30 );
-				helper.rotation.x = Math.PI / 2;
-				group.add( helper );
+				// var helper = new THREE.GridHelper( 300, 30 );
+				// helper.rotation.x = Math.PI / 2;
+				// group.add( helper );
 
 				//draw panda
 				var size = 300 / 30;
