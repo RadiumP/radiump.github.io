@@ -455,7 +455,7 @@ var controls = new THREE.OrbitControls( camera, renderer.domElement );
 controls.target = new THREE.Vector3(0,80,0);
 controls.maxPolarAngle = Math.PI / 2;
 controls.minDistance = 100;
-controls.maxDistance = 220;
+controls.maxDistance = 420;
 
 requestAnimationFrame(render);
 
