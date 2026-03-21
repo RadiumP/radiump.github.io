@@ -32,7 +32,11 @@
 
     var audio = new Audio();
     audio.src = playlist[startIndex];
-    audio.play();
+
+    // Browsers block autoplay; start paused and let user click to play
+    isPlaying = false;
+    btTxt.textContent = 'Play';
+    btTl.pause();
 
     var i = startIndex;
     audio.addEventListener('ended', function () {

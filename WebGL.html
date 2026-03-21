@@ -1,21 +1,416 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="css/grid.css" />
-		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		<script src="js/modernizr.custom.js"></script>
-	</head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Playground</title>
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css' />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-	<body>
-		<div class="container"></div>
-		<script src="js/imagesloaded.pkgd.min.js"></script>
-		<script src="js/masonry.pkgd.min.js"></script>
-		<script src="js/classie.js"></script>
-		<script src="js/cbpGridGallery.js"></script>
-		<script src="js/gallery-data.js"></script>
-		<script src="js/gallery.js"></script>
-	</body>
+        body {
+            font-family: 'Josefin Slab', Arial, sans-serif;
+            background-color: transparent;
+            background-image: url(images/pattern.png), url(images/bg.jpg);
+            background-repeat: repeat, no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: auto, cover;
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .page-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .page-header h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #fff;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.6);
+        }
+
+        .page-header h1 span {
+            display: block;
+            font-size: 1rem;
+            color: #2CD892;
+            margin-top: 0.25rem;
+            letter-spacing: 0.05em;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.6);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .header-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            background: rgba(0,128,128,0.35);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.3s, transform 0.2s;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-shadow: 0 0 3px rgba(0,0,0,0.4);
+        }
+
+        .header-nav a:hover {
+            background: rgba(0,215,128,0.4);
+            transform: scale(1.05);
+        }
+
+        /* Grid */
+        .projects-grid {
+            max-width: 1200px;
+            margin: 1.5rem auto 3rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        /* Card */
+        .project-card {
+            background: rgba(0,0,0,0.45);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            background: rgba(0,128,128,0.3);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+        }
+
+        .card-image {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: #7BFFC8;
+            letter-spacing: 0.03em;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        }
+
+        .card-body {
+            padding: 1rem 1.25rem 1.25rem;
+        }
+
+        .card-body h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 0.35rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .card-body p {
+            font-size: 0.85rem;
+            color: #ddd;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Modal overlay */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0s 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal {
+            background: rgba(10,10,15,0.92);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            max-width: 720px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(20px) scale(0.97);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(12px);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 16px 16px 0 0;
+            display: block;
+        }
+
+        .modal-content {
+            padding: 1.75rem 2rem 2rem;
+        }
+
+        .modal-content h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 0.25rem;
+            text-shadow: 0 0 8px rgba(0,0,0,0.4);
+        }
+
+        .modal-subtitle {
+            font-size: 0.9rem;
+            color: #2CD892;
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        .modal-description a {
+            color: #2CD892;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .modal-description a:hover {
+            color: #fff;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-close:hover {
+            background: rgba(0,215,128,0.4);
+        }
+
+        /* Nav arrows in modal */
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-nav:hover {
+            background: rgba(0,215,128,0.4);
+        }
+
+        .modal-nav.prev { left: 1rem; }
+        .modal-nav.next { right: 1rem; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1.5rem 1.25rem 0.75rem;
+            }
+            .projects-grid {
+                padding: 0 1.25rem;
+                grid-template-columns: 1fr;
+            }
+            .modal { border-radius: 12px; }
+            .modal-image { border-radius: 12px 12px 0 0; }
+            .modal-content { padding: 1.25rem 1.5rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="page-header">
+        <h1>Web Playground <span>WebGL, 3D & Interactive Demos</span></h1>
+        <nav class="header-nav">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Next &rarr;</a>
+        </nav>
+    </header>
+
+    <div class="projects-grid" id="projects-grid"></div>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <button class="modal-nav prev" id="modal-prev">&#8249;</button>
+        <button class="modal-nav next" id="modal-next">&#8250;</button>
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <img class="modal-image" id="modal-image" src="" alt="" />
+            <div class="modal-content">
+                <h2 id="modal-title"></h2>
+                <div class="modal-subtitle" id="modal-subtitle"></div>
+                <div class="modal-description" id="modal-description"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/gallery-data.js"></script>
+    <script>
+    (function () {
+        var data = GALLERY_DATA['WebGL.html'];
+        if (!data) return;
+
+        var items = data.items;
+        var grid = document.getElementById('projects-grid');
+        var overlay = document.getElementById('modal-overlay');
+        var modalImg = document.getElementById('modal-image');
+        var modalTitle = document.getElementById('modal-title');
+        var modalSub = document.getElementById('modal-subtitle');
+        var modalDesc = document.getElementById('modal-description');
+        var currentIndex = 0;
+
+        // Render cards
+        items.forEach(function (item, i) {
+            var card = document.createElement('div');
+            card.className = 'project-card';
+            card.innerHTML =
+                '<div class="card-image">' +
+                    '<img src="' + item.thumb + '" alt="' + item.title + '" loading="lazy" />' +
+                    '<div class="card-badge">' + item.subtitle + '</div>' +
+                '</div>' +
+                '<div class="card-body">' +
+                    '<h3>' + item.title + '</h3>' +
+                    '<p>' + item.description.replace(/<a [^>]*>.*?<\/a>/g, '') + '</p>' +
+                '</div>';
+            card.addEventListener('click', function () { openModal(i); });
+            grid.appendChild(card);
+        });
+
+        function openModal(index) {
+            currentIndex = index;
+            updateModal();
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateModal() {
+            var item = items[currentIndex];
+            modalImg.src = item.image;
+            modalImg.alt = item.title;
+            modalTitle.textContent = item.title;
+            modalSub.textContent = item.subtitle;
+            modalDesc.innerHTML = item.description;
+        }
+
+        document.getElementById('modal-close').addEventListener('click', closeModal);
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) closeModal();
+        });
+
+        document.getElementById('modal-prev').addEventListener('click', function (e) {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateModal();
+        });
+
+        document.getElementById('modal-next').addEventListener('click', function (e) {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % items.length;
+            updateModal();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (!overlay.classList.contains('active')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                updateModal();
+            }
+            if (e.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateModal();
+            }
+        });
+    })();
+    </script>
+</body>
 </html>
