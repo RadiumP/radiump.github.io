@@ -3,14 +3,14 @@
     <head>
         <title>Welcome to Chenyang's World</title>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Chenyang Li" />
         <meta name="keywords" content="css3, transitions, menu, blur, navigation, typography, font, letters, text-shadow" />
-       
-        
+
+
         <!--favicon        -->
-        
+
         <link rel="apple-touch-icon" sizes="180x180" href="icon/favicons/apple-touch-icon.png">
         <link rel="icon" type="image/png" href="icon/favicons/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="icon/favicons/favicon-16x16.png" sizes="16x16">
@@ -31,16 +31,8 @@
             <div class = "header"></div>
 
             <div class = "ct-header">
-            <h1>WELCOME <span>to Chenyang's World</span></h1>   
-            <ul class = "ct-connect">
-                <li><a href = "https://www.facebook.com/young.lee.3701779"><img src = "icon/fb.png" ></a></li>
-                 <li><a href = "https://github.com/RadiumP"><img src = "icon/github.png" ></a></li>
-                  <li><a href = "https://www.linkedin.com/in/chenyang-li-9141a7112"><img src = "icon/in.png" ></a></li>
-                   <li><a href = "https://www.pinterest.com/atychip/"><img src = "icon/pin.png" ></a></li>
-                  <li><a href = "https://www.instagram.com/atychip"><img src = "icon/insta.png" ></a></li>
-<!--                <li><img src="icon/logo.png" style="display: none;"></li> -->
-                 
-            </ul>
+            <h1>WELCOME <span>to Chenyang's World</span></h1>
+            <ul class = "ct-connect" id="social-links"></ul>
             </div>
 
             <div class="content">
@@ -52,7 +44,7 @@
                     <li><a href="interests.html">Interests</a></li>
                     <li><a href="./myblog">Blog</a></li>
                 </ul>
-              
+
             </div>
             <div class = "play">
             <svg xmlns="https://www.w3.org/2000/svg" version="1.1" class="svg-filters">
@@ -71,64 +63,8 @@
             </div>
 
         </div>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-        <script type="text/javascript" src = "js/TweenMax.min.js"></script>
-        <script type="text/javascript">
-                    initBt10();
-                        // Button 10
-            function initBt10() {
-              var bt = document.querySelectorAll('#component-10')[0];
-              var btTxt = bt.querySelector('.button__text');
-              var isPlaying = true;
-              var turbVal = { val: 0.000001 };
-              var turbValX = { val: 0.000001 };
-              var turb = document.querySelectorAll('#filter-music feTurbulence')[0];
-              var btTl = new TimelineLite({ paused: false, onUpdate: function() {
-                turb.setAttribute('baseFrequency', turbVal.val + ' ' + turbValX.val);
-              }, onComplete: function() { 
-                btTl.reverse();
-              }, onReverseComplete: function() {
-                btTl.restart();
-              } });
-             
-              btTl.to(turbValX, 0.4, { val: 0.04, ease: Power0.easeNone }, 0);
-              btTl.to(turbVal, 0.1, { val: 0.2 ,ease: Power0.easeNone }, 0);
-              var audio = new Audio();
-              var playlist = new Array('music/Too Bad.mp3','music/Actor.mp3','music/Me, Myself & I.mp3','music/pop.mp3')
-
-              
-              //console.log(playlist[1])
-              audio.src = playlist[3];
-              //audio.loop = true;
-              audio.play();
-              var i = 0;
-              audio.addEventListener('ended', function () {
-			    i = ++i < playlist.length ? i : 0;
-			    console.log(playlist[i])
-			    audio.src = playlist[i];
-			    audio.play();
-			}, true);
-
-              bt.addEventListener('click', function() {
-                if(isPlaying) {
-                  btTxt.textContent = 'Play';
-                  btTl.pause()
-                  var btTl2 = new TimelineLite({ onUpdate: function() {
-                    turb.setAttribute('baseFrequency', turbVal.val + ' ' + turbValX.val);
-                  } });
-                  btTl2.to(turbVal, 0.1, { val: 0.000001 });
-                  btTl2.to(turbValX, 0.1, { val: 0.000001 }, 0);
-                  isPlaying = false;
-                  audio.pause();
-
-                } else {
-                  btTxt.textContent = 'Pause';
-                  btTl.play();
-                  isPlaying = true;
-                  audio.play();
-                }
-              });
-            }
-        </script>
+        <script src="js/site-config.js"></script>
+        <script src="js/TweenMax.min.js"></script>
+        <script src="js/music-player.js"></script>
     </body>
 </html>

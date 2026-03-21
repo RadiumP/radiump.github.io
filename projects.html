@@ -2,177 +2,20 @@
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="css/grid.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
 		<script src="js/modernizr.custom.js"></script>
 	</head>
 
 	<body>
-		<div class= "container">
-			<header class="clearfix">
-				
-				<h1>Computer Graphics</h1>
-				<nav>
-					<a href="WebGL.html"  class="bp-icon bp-icon-prev" data-info="Previous"><span>Previous</span></a>
-					<!--a href="" class="bp-icon bp-icon-next" data-info="next Blueprint"><span>Next Blueprint</span></a-->
-					<a href="index.html"  class="bp-icon bp-icon-drop" data-info="Home"><span>Home</span></a>
-					<a href="dv.html" class="bp-icon bp-icon-next" data-info="Next"><span>Next</span></a>
-				</nav>
-			</header>
-			<div id="grid-gallery" class="grid-gallery">				
-				<section class="grid-wrap">
-					<ul class="grid">
-						<li class="grid-sizer"></li><!-- for Masonry column width -->
-						<li>
-							<figure>
-								<img src="thumbs/2dstick_thumb.png" alt="img01"/>
-								<figcaption><h3>2D StickMan</h3><p>OpenGL C++</p></figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="thumbs/3dsnowman_thumb.png" alt="img02"/>
-								<figcaption><h3>3D SnowMan</h3><p>OpenGL C++</p></figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="thumbs/raytracing_thumb.png" alt="img03"/>
-								<figcaption><h3>Ray-Tracing</h3><p>OpenGL C++</p></figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="thumbs/hbaoplus_thumb.png" alt="img04"/>
-								<figcaption><h3>AO with Hardware Tessellation</h3><p>OpenGL C++</p></figcaption>
-							</figure>
-						</li>	
-
-						<li>
-							<figure>
-								<img src="thumbs/loop_thumb.png" alt="img05"/>
-								<figcaption><h3>Loop Subdivision C++</h3><p>Computer Graphics</p></figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="thumbs/conformal_thumb.png" alt="img06"/>
-								<figcaption><h3>Spherical Conformal Mapping</h3><p>Computer Graphics</p></figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="thumbs/phong_thumb.png" alt="img07"/>
-								<figcaption><h3>PN-Triangles and Phong Tessellation</h3><p>OpenGL C++</p></figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="thumbs/pbr_thumb.png" alt="img08"/>
-								<figcaption><h3>OpenGL Projects</h3><p>OpenGL C++</p></figcaption>
-							</figure>
-						</li>
-					
-
-
-					</ul>
-				</section>
-				<section class="slideshow">
-					<ul>
-						<li>
-							<figure>
-								<figcaption>
-									<h3>2D StickMan</h3>
-									<p>Implemented animated 2D StickMan which can do exercises, walk, climb up and down the hill on OpenGL. <a href="https://youtu.be/-hrZr6Oodz8" target="_blank"> Video Link</a><a href="https://github.com/RadiumP/Computer-Graphics/tree/master/P2.Li%2CChenyang.V2" target="_blank"> Github Link</a></p>
-								</figcaption>
-								<img src="images/2dstick.png" alt="img01"/>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<figcaption>
-									<h3>3D SnowMan</h3>
-									<p>Two 3D Snowmen implemented on OpenGL with texture mapping, bump mapping, Perlin noise mapping. Scene contains a interactive camera and basic shading. <a href="https://youtu.be/x1XEPS50Deo" target="_blank"> Video Link</a><a href="https://github.com/RadiumP/Computer-Graphics/tree/master/P3.Li%2CChenyang.V1" target="_blank"> Github Link</a></p>
-								</figcaption>
-								<img src="images/3dsnowman.png" alt="img02"/>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<figcaption>
-									<h3>Ray-tracing with CPU</h3>
-									<p>Rendered ray-tracing with CPU to deliver shadow and reflection effects.<a href="https://youtu.be/zVJdsXqNtYc" target="_blank"> Video Link</a><a href="https://github.com/RadiumP/Computer-Graphics/tree/master/P4.Li%2CChenyang.V1" target="_blank"> Github Link</a> </p>
-								</figcaption>
-								<img src="images/raytracing.png" alt="img03"/>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<figcaption>
-									<h3>AO with Hardware Tessellation</h3>
-									<p>Implemented real-time SSAO, HBAO and HBAO+ to provide image-based ambient occlusion effects on hardware tessellated objects.<a href="https://youtu.be/sK42YSKfSiw" target="_blank"> Video Link 1</a><a href="https://youtu.be/P_aBNqYNl4o" target="_blank"> Video Link 2</a><a href="https://github.com/RadiumP/Tessellation" target="_blank"> Github Link</a> </p>
-								</figcaption>
-								<img src="images/hbaoplus.png" alt="img04"/>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<figcaption>
-									<h3>Loop Subdivision C++</h3>
-									<p>Implemented Loop Subdivision to smooth low-poly objects. Working well on objects with borders(teapot) and without (bunny).<a href="https://github.com/RadiumP/Computer-Graphics/tree/master/Subdivision" target="_blank"> Github Link</a></p>
-								</figcaption>
-								<img src="images/loop.png" alt="img05"/>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<figcaption>
-									<h3>Spherical Conformal Mapping</h3>
-									<p>Implement spherical conformal paramerterization method to map a brain onto a sphere with Genus Zero Conformal Mapping algorithm. <a href="https://github.com/RadiumP/Computer-Graphics/tree/master/Conformal" target="_blank"> Github Link</a></p>
-								</figcaption>
-								<img src="images/conformal.png" alt="img06"/>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<figcaption>
-									<h3>PN-Triangles and Phong Tessellation</h3>
-									<p>Implemented real-time GPU tessellation with Tessellation Shader on OpenGL 4.0. Used PN-Triangles and Phong Tessellation for smoothing.<a href="https://youtu.be/iWZ-cuEQlBE" target="_blank"> Video Link</a> <a href="https://github.com/RadiumP/Tessellation/tree/master/Tessellation/TessMesh" target="_blank"> Github Link</a></p>
-								</figcaption>
-								<img src="images/phong.png" alt="img07"/>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<figcaption>
-									<h3>OpenGL Projects:PBR, AO etc</h3>
-									<p>A collection of OpenGL projects including PBR, HDR, SSAO, Assimp etc.<a href="https://github.com/RadiumP/OpenGL" target="_blank"> Github Link</a></p>
-								</figcaption>
-								<img src="images/pbr.png" alt="img08"/>
-							</figure>
-						</li>
-					
-					</ul>
-					<nav>
-						<span class="icon nav-prev"></span>
-						<span class="icon nav-next"></span>
-						<span class="icon nav-close"></span>
-					</nav>
-					<div class="info-keys icon">Navigate with arrow keys</div>
-				</section>
-			</div>
-
-		</div>
+		<div class="container"></div>
 		<script src="js/imagesloaded.pkgd.min.js"></script>
 		<script src="js/masonry.pkgd.min.js"></script>
 		<script src="js/classie.js"></script>
 		<script src="js/cbpGridGallery.js"></script>
-		<script>
-			new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
-		</script>
+		<script src="js/gallery-data.js"></script>
+		<script src="js/gallery.js"></script>
 	</body>
-
-
 </html>

@@ -20,16 +20,16 @@ var bird;
 var tiltDirection = 1;
 
 function init() {
-    var canvasWidth = 846; 
-    var canvasHeight = 494;
+    var canvasWidth = window.innerWidth || 846;
+    var canvasHeight = window.innerHeight || 494;
 
     // RENDERER
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.gammaInput = true;
     renderer.gammaOutput = true;
     renderer.setSize(canvasWidth, canvasHeight);
-    renderer.setClearColorHex( 0x0, 1.0 );
-    renderer.shadowMapEnabled = true;
+    renderer.setClearColor( 0x0, 1.0 );
+    renderer.shadowMap.enabled = true;
 
     // CAMERA
     camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 1, 4000 );
