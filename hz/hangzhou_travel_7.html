@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>杭州，不只是西湖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* 江南水乡·白蛇传 色调 */
+    --ink: #1a2028;          /* 深墨蓝·夜雨中的湖 */
+    --paper: #f2f4f0;        /* 烟雨白·宣纸底色 */
+    --jade: #5a9e8f;         /* 青玉·白蛇的颜色 */
+    --jade-dark: #3d7a6d;    /* 深青·水波暗处 */
+    --jade-pale: #d4eae5;    /* 浅碧·雨后湖面 */
+    --mist: #8fa8a3;         /* 烟色·远山薄雾 */
+    --pale: #e8eeec;         /* 淡青白·蒙蒙湿意 */
+    --red-silk: #8b3a3a;     /* 朱砂·红绸一缕 */
+    --ink-text: #1e2d2a;     /* 正文墨色 */
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink-text);
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-weight: 300;
+    line-height: 1.9;
+    font-size: 16px;
+    /* 细腻纸纹 */
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(90,158,143,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(90,158,143,0.03) 0%, transparent 50%);
+  }
+
+  /* ── COVER ── 深夜西湖·烟雨朦胧 */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 60px 80px;
+    background:
+      linear-gradient(170deg, #0d1a1f 0%, #152430 40%, #1a2e28 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 水波纹背景 */
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 28px,
+        rgba(90,158,143,0.04) 28px,
+        rgba(90,158,143,0.04) 29px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 60px,
+        rgba(90,158,143,0.025) 60px,
+        rgba(90,158,143,0.025) 61px
+      );
+  }
+
+  /* 烟雾光晕 */
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(21,36,48,0.6), transparent);
+    pointer-events: none;
+  }
+
+  .cover-label {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--jade);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    position: relative;
+    opacity: 0.9;
+  }
+
+  .cover-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(44px, 8vw, 90px);
+    font-weight: 700;
+    color: #e8f0ed;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    position: relative;
+  }
+
+  .cover-title span {
+    color: var(--jade);
+    text-shadow: 0 0 40px rgba(90,158,143,0.5);
+  }
+
+  .cover-subtitle {
+    margin-top: 20px;
+    font-size: 13.5px;
+    color: rgba(212,234,229,0.45);
+    letter-spacing: 0.2em;
+    position: relative;
+    font-weight: 300;
+  }
+
+  .cover-date {
+    position: absolute;
+    top: 60px;
+    right: 80px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: rgba(90,158,143,0.5);
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .cover-deco {
+    position: absolute;
+    top: 50%;
+    right: 120px;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 35%;
+    background: linear-gradient(to bottom, transparent, var(--jade), transparent);
+    opacity: 0.3;
+  }
+
+  /* ── LAYOUT ── */
+  .article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+  }
+
+  /* ── CHAPTER HEADER ── */
+  .chapter {
+    margin: 80px 0 40px;
+    position: relative;
+  }
+
+  .chapter::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1.5px;
+    background: var(--jade);
+    margin-bottom: 16px;
+    opacity: 0.7;
+  }
+
+  .chapter-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--jade);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.8;
+  }
+
+  .chapter-title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+
+  .chapter-sub {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--mist);
+    letter-spacing: 0.2em;
+  }
+
+  /* ── PROSE ── */
+  p {
+    margin-bottom: 1.6em;
+    font-size: 16px;
+    line-height: 2.05;
+    color: #253430;
+  }
+
+  .lead {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 2.05;
+    border-left: 2px solid var(--jade);
+    padding-left: 20px;
+    margin-bottom: 2em;
+  }
+
+  .note {
+    font-size: 13px;
+    color: var(--mist);
+    font-style: italic;
+    margin: -0.5em 0 2em;
+    padding-left: 16px;
+    border-left: 1px solid var(--jade-pale);
+  }
+
+  /* ── PHOTO SLOTS ── */
+  .photo {
+    margin: 32px 0;
+    position: relative;
+  }
+
+  .photo-box {
+    width: 100%;
+    background: var(--pale);
+    border: 1px solid #c8dbd7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 260px;
+  }
+
+  .photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-box .placeholder-text {
+    padding: 40px;
+    text-align: center;
+    color: var(--mist);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+  }
+
+  .photo-box .placeholder-icon {
+    font-size: 26px;
+    margin-bottom: 10px;
+    opacity: 0.35;
+  }
+
+  .photo-caption {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--mist);
+    letter-spacing: 0.1em;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .photo-grid {
+    display: grid;
+    gap: 10px;
+    margin: 32px 0;
+  }
+
+  .photo-grid.two { grid-template-columns: 1fr 1fr; }
+  .photo-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+  .photo-grid.two-one { grid-template-columns: 2fr 1fr; }
+
+  .photo-grid .photo-box { min-height: 200px; }
+
+  .photo-grid .caption-row {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    color: var(--mist);
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── PULL QUOTE ── 深碧如湖 */
+  .pullquote {
+    margin: 48px -40px;
+    padding: 40px 60px 36px;
+    background: linear-gradient(135deg, #152e28 0%, #1a3830 100%);
+    color: #d4eae5;
+    font-size: 19px;
+    line-height: 1.9;
+    font-weight: 300;
+    position: relative;
+    border-top: 1px solid rgba(90,158,143,0.3);
+    border-bottom: 1px solid rgba(90,158,143,0.3);
+  }
+
+  .pullquote::before {
+    content: '\300C';
+    font-family: 'Noto Serif SC', serif;
+    font-size: 64px;
+    color: var(--jade);
+    position: absolute;
+    top: 12px;
+    left: 28px;
+    line-height: 1;
+    opacity: 0.5;
+  }
+
+  .pullquote cite {
+    display: block;
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--jade);
+    letter-spacing: 0.3em;
+    font-style: normal;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  /* ── INFO BOX ── */
+  .infobox {
+    border: 1px solid rgba(90,158,143,0.25);
+    background: rgba(212,234,229,0.35);
+    padding: 22px 26px;
+    margin: 32px 0;
+    font-size: 14px;
+  }
+
+  .infobox-title {
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--jade-dark);
+    margin-bottom: 12px;
+  }
+
+  .infobox ul { list-style: none; padding: 0; }
+
+  .infobox li {
+    padding: 6px 0;
+    color: #253430;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(90,158,143,0.15);
+    font-size: 13.5px;
+  }
+
+  .infobox li:last-child { border: none; }
+
+  .infobox li .tag {
+    flex-shrink: 0;
+    background: var(--jade);
+    color: white;
+    padding: 1px 7px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+    border-radius: 1px;
+  }
+
+  /* ── DIVIDER ── 涟漪 */
+  .divider {
+    text-align: center;
+    margin: 60px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(90,158,143,0.35), transparent);
+  }
+
+  .divider span {
+    color: var(--jade);
+    font-size: 16px;
+    opacity: 0.6;
+  }
+
+  /* ── FOOTER ── */
+  .foot {
+    text-align: center;
+    padding: 60px 40px;
+    background: linear-gradient(135deg, #0f1e1b 0%, #152e28 100%);
+    color: rgba(212,234,229,0.35);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    font-style: italic;
+  }
+
+  .foot strong {
+    color: var(--jade);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  /* ── EM 强调 ── */
+  em {
+    font-style: normal;
+    color: var(--jade-dark);
+    font-weight: 500;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .cover { padding: 40px 30px; }
+    .article { padding: 40px 20px 80px; }
+    .pullquote { margin: 32px -20px; padding: 28px 32px; }
+    .photo-grid.two, .photo-grid.three, .photo-grid.two-one {
+      grid-template-columns: 1fr;
+    }
+    .cover-date { display: none; }
+  }
+
+  /* ── HIGHLIGHT TEXT ── */
+  em {
+    font-style: normal;
+    color: var(--warm);
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-date">2026 · 壹月</div>
+  <div class="cover-deco"></div>
+  <div class="cover-label">Travel Journal · 旅行手记</div>
+  <h1 class="cover-title">杭州，<br>不只是<span>西湖</span></h1>
+  <p class="cover-subtitle">南宋御街 · 黑神话朝圣 · 精品咖啡 · 深夜的灵魂毒药</p>
+</div>
+
+
+<!-- ARTICLE BODY -->
+<div class="article">
+
+  <p class="lead">这次来杭州，没有去西湖。但杭州够大，大到一条中山中路就能走出好几个故事，一家酒吧能把整座城的气质装进一杯酒里。</p>
+
+  <!-- ── CHAPTER 1 ── -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter 01</div>
+    <h2 class="chapter-title">抵达·入夜</h2>
+    <div class="chapter-sub">南宋御街</div>
+  </div>
+
+  <p>夜里到的杭州。从高铁站出来，空气带着江南特有的湿意，不算太冷，却有种说不清的温柔感。落脚的地方就在中山中路边上——那条从南宋皇城延伸下来的老街。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:320px;">
+      <img src="南宋御街/IMG_20260117_194038.jpg" alt="HAPPY HangZhou 像素风街头装置">
+    </div>
+    <p class="photo-caption">街角的像素画把杭州变成了马里奥关卡，雷峰塔成了最终 Boss 城堡</p>
+  </div>
+
+  <p>街角有一面巨型像素风装置牌，把雷峰塔画成了马里奥关卡里的场景，杭州的吉祥物踩着砖块跑过断桥。我在那里站了好一会儿，觉得这城市挺会玩自己的文化梗。</p>
+
+  <p>夜深了，街上还有人。Valentine酒吧的原木外廊亮着暖灯，二楼的栏杆上站着一对新婚夫妇在拍照，婚纱在冬夜的风里轻轻晃。走过去，走过那条弄堂尽头发光的"杭州"大字——被填满了西湖、钱塘、雷峰塔的图案，字里面藏着整座城。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="南宋御街/IMG_20260117_194310.jpg" alt="Valentine 酒吧原木外廊夜景">
+    </div>
+    <div class="photo-box">
+      <img src="南宋御街/IMG_20260117_202006.jpg" alt="杭州霓虹字装置">
+    </div>
+    <div class="caption-row">左：原木外廊上拍婚纱的新人 &nbsp;·&nbsp; 右：填满杭州元素的大字装置</div>
+  </div>
+
+  <p>肚子提醒我该吃东西了。拐进<em>王二面馆</em>，要了一碗炒拌川——面条裹着酱汁，加了豆芽和青菜，朴实但够味，一碗下去整个人都暖了。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="food/IMG_20260117_195101.jpg" alt="王二面馆招牌夜景">
+    </div>
+    <div class="photo-box">
+      <img src="food/IMG_20260117_200207.jpg" alt="炒拌川">
+    </div>
+  </div>
+
+  <p>吃完不想回去，顺着中山路再往前走，遇到了一整排的炭烧羊肉砂锅——十几只陶锅一字排开，架在炭炉上，白雾蒸腾，整条街都是那个味道。冬夜的烟火气，真的很难抵抗。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:280px;">
+      <img src="food/IMG_20260117_215035.jpg" alt="炭烧羊肉砂锅夜宵摊">
+    </div>
+    <p class="photo-caption">中山中路 336 号，十几只陶锅一字排开，是整条街最诚实的暖意</p>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ── CHAPTER 2 ── -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter 02</div>
+    <h2 class="chapter-title">清晨·清河坊</h2>
+    <div class="chapter-sub">早上</div>
+  </div>
+
+  <p>早起，专门找了<em>游埠豆浆</em>。这是建德游埠古镇走出来的品牌，店面藏在清河坊一条不太起眼的巷子里，门口台阶、木牌匾、老城区的气息扑面而来。豆浆厚实，加了油条，配着热气吃下去，整个胃都安定了。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:260px;">
+      <img src="food/IMG_20260118_100139.jpg" alt="游埠豆浆门面">
+    </div>
+    <p class="photo-caption">清河坊里最低调的早餐，却是最踏实的开始</p>
+  </div>
+
+  <p>早饭后去<em>泮芳香</em>买煎饺。这是来杭州必打卡的地方，队伍排得老长，等待的人在门口挤着，热气腾腾的锅贴底面煎得焦黄，撒了一层红椒粉，拿到手里还烫，边走边吃才是正确打开方式。</p>
+
+  <div class="photo-grid two-one">
+    <div class="photo-box">
+      <img src="food/IMG_20260118_103204.jpg" alt="泮芳香排队盛况">
+    </div>
+    <div class="photo-box">
+      <img src="food/IMG_20260118_103901.jpg" alt="煎饺近景">
+    </div>
+    <div class="caption-row">排队二十分钟，值得</div>
+  </div>
+
+  <p>清河坊的街道上，老建筑和新店铺挤在一起。<em>二师兄的店</em>门口摆着一头戴红花的猪仔造型，卖的是酱肉干货；旁边清末永泰百货的旧址上，一家混合了维多利亚风的糖果铺贴着侍者人偶，橙金的门面在冬日里格外显眼。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="南宋御街/IMG_20260118_101450.jpg" alt="二师兄的店">
+    </div>
+    <div class="photo-box">
+      <img src="南宋御街/IMG_20260118_102204.jpg" alt="历史建筑旁的橙金色糖果店">
+    </div>
+    <div class="caption-row">清河坊：历史建筑的门牌和当代店铺的霓虹，相安无事</div>
+  </div>
+
+  <p>白天的中山中路下起了小雨，梧桐树的落叶铺在湿润的石板上，撑伞的行人慢慢走过老式骑楼。这条路平时的样子，比任何精心布置的打卡点都更像杭州。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:320px;">
+      <img src="南宋御街/IMG_20260119_082516.jpg" alt="雨天的南宋御街">
+    </div>
+    <p class="photo-caption">冬雨，石板湿，梧桐叶落尽——这才是南宋御街最本来的样子</p>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ── CHAPTER 2B ── -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter 02½</div>
+    <h2 class="chapter-title">上午·鼓楼与铜像</h2>
+    <div class="chapter-sub">中山路 · 上午</div>
+  </div>
+
+  <p>早饭后沿中山路向南走，遇到了<em>鼓楼</em>——城墙砖砌的拱洞，上头是「镇海楼」和「朝天门」的牌匾，灰瓦飞檐，厚实地压在整条路的尽头。站在城墙脚下，一抬头就是宋朝的尺度。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="景色/IMG_20260118_102948.jpg" alt="鼓楼·镇海楼城墙与拱洞">
+    </div>
+    <div class="photo-box">
+      <img src="景色/IMG_20260118_113303.jpg" alt="鼓楼俯瞰·城市道路与古城楼并置">
+    </div>
+    <div class="caption-row">中山路的尽头，宋朝留下来的砖</div>
+  </div>
+
+  <p>再往前，街角有一组大型青铜群像，骑马的将领旗帜猎猎，步卒手持武器从岩石中涌出，底座刻着「壮哉山河」。这种气概放在街头，路过的行人反而习以为常，只有外来者会停下来多看两眼。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:300px;">
+      <img src="景色/IMG_20260118_113609.jpg" alt="街头青铜群像·骑将与武士">
+    </div>
+    <p class="photo-caption">铜铸的将士在梧桐枯枝间矗立，把历史堂堂正正地摆在街头</p>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ── CHAPTER 2C ── -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter 03</div>
+    <h2 class="chapter-title">午前·云栖竹径</h2>
+    <div class="chapter-sub">转塘 · 云栖竹径</div>
+  </div>
+
+  <p class="lead">如果说这次杭州之行有一个意外之喜，那一定是<em>云栖竹径</em>。</p>
+
+  <p>从市区坐车出来，路越来越窄，城市渐渐褪去，换成山林气息。进了竹径景区，踩着碎石铺就的山路，两侧的毛竹一下子就把天空遮住了——竹秆笔直冲上去，细密的竹叶在头顶汇成一片绿色穹顶，光从缝隙里漏下来，落成散碎的斑点。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:380px;">
+      <img src="景色/IMG_20260118_155056.jpg" alt="云栖竹径·石板小路穿行竹林">
+    </div>
+    <p class="photo-caption">一条石板路，两侧竹海，这是云栖竹径最标准的样子，但看到真实的依然会屏息</p>
+  </div>
+
+  <p>亭子里立着「云栖竹径」四字的题字碑，书法飘逸，碑面已有些岁月的痕迹。林子很深，静得能听见自己的脚步声和偶尔的鸟鸣。走进去，走深了，整个人就慢下来了。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="景色/IMG_20260118_153438.jpg" alt="云栖竹径题字碑亭">
+    </div>
+    <div class="photo-box">
+      <img src="景色/IMG_20260118_153150.jpg" alt="仰望竹林·竹秆直指天际">
+    </div>
+    <div class="caption-row">左：题字碑亭，亭边落叶铺地 &nbsp;·&nbsp; 右：抬头，满眼是竹</div>
+  </div>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="景色/IMG_20260118_154730.jpg" alt="竹林光影·斑驳透光">
+    </div>
+    <div class="photo-box">
+      <img src="景色/IMG_20260118_154730.jpg" alt="白竹林·竹秆银白">
+    </div>
+  </div>
+
+  <p>走完竹径出来，感觉身上沾了一层竹林的气息，整个人反而更安静了。这种「被自然按了暂停键」的感觉，是任何城市景点都给不了的。</p>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ── CHAPTER 3 ── -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter 04</div>
+    <h2 class="chapter-title">下午·黑神话朝圣</h2>
+    <div class="chapter-sub">艺创小镇</div>
+  </div>
+
+  <p class="lead">这次来杭州，有个私心——去艺创小镇的<em>黑神话官方零售店</em>。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="黑神话/IMG_20260118_133106.jpg" alt="艺创小镇路口·中国美院国家大学科技园">
+    </div>
+    <div class="photo-box">
+      <img src="黑神话/IMG_20260118_133847.jpg" alt="黑神话零售店指引牌">
+    </div>
+  </div>
+
+  <p>店就在中国美术学院国家大学科技园旁边。路口指引牌是纯黑色的，印着<em>鸱鸮</em>——那只鸟头人面的怪物展翅停在枯枝上，配着竖排"黑神话"三个字，气场拉满。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:340px;">
+      <img src="黑神话/IMG_20260118_134059.jpg" alt="鸱鸮等身雕塑·店门口镇守">
+    </div>
+    <p class="photo-caption">鸱鸮——游戏里鸟头人面的怪物，在现实里依然令人屏息</p>
+  </div>
+
+  <p>进店之前先感受了一下艺创小镇的自然景观——废弃采石场改造的山谷水景里，青绿色的水面被峭壁夹住，一只粉色兔子雕塑端坐在岩石顶端，背后是两栋现代楼宇，说不出的违和又和谐。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:300px;">
+      <img src="黑神话/IMG_20260118_143925.jpg" alt="采石场水景·粉色兔子雕塑坐在岩顶">
+    </div>
+    <p class="photo-caption">废弃采石场里的绿水、峭壁与粉兔子，一种奇异的当代美学</p>
+  </div>
+
+  <p>店里的陈列像一个微型的西游博物馆。入口铺满概念原画，<em>虎先锋</em>骑着大虎的精细摆件震住了我。还有<em>牛魔王</em>的巨型站像，铠甲和毛发的每一处细节都是匠心，盯着看十分钟不嫌多。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="黑神话/IMG_20260118_134129.jpg" alt="虎先锋骑虎模型·展台摆件">
+    </div>
+    <div class="photo-box">
+      <img src="黑神话/IMG_20260118_134700.jpg" alt="牛魔王巨型站像·铠甲细节拉满">
+    </div>
+    <div class="caption-row">每一个细节都是认真的</div>
+  </div>
+
+  <p><em>土地公</em>的手办按颜色排了三个版本：金色、铜色、蓝色，神情一模一样，憨态可掬地伸着手。透过二楼走廊探出身子的<em>天蓬元帅</em>，骨瘦如柴，手持禅杖，挂在那里像真的从画里爬出来。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="黑神话/IMG_20260118_134306.jpg" alt="土地公手办三色版本">
+    </div>
+    <div class="photo-box">
+      <img src="黑神话/IMG_20260118_140413.jpg" alt="天蓬元帅挂像·从廊上探出身">
+    </div>
+  </div>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="黑神话/IMG_20260118_134536.jpg" alt="大头神像展示·黄金冠冕">
+    </div>
+    <div class="photo-box">
+      <img src="黑神话/IMG_20260118_141124.jpg" alt="各色角色徽章墙">
+    </div>
+  </div>
+
+  <p>二楼整面墙是概念图和原画，"BLACKMYTH"的字从中间破墙而出，像游戏通关之后的彩蛋画廊，我在那里举着手机，一张接一张地拍，停不下来。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:300px;">
+      <img src="黑神话/IMG_20260118_142558.jpg" alt="二楼概念原画墙·BLACKMYTH大字">
+    </div>
+    <p class="photo-caption">密密麻麻的原画挂满整面墙，游戏世界观的冰山一角</p>
+  </div>
+
+  <p>战利品是必须的。买了一袋「<em>黑子戏</em>」零食，拎着印悟空的购物袋，还点了一杯打印了女妖面孔的定制咖啡——咖啡杯套上印着悟空的脸，喝的时候总觉得有人在盯着你。</p>
+
+  <div class="photo-grid three">
+    <div class="photo-box">
+      <img src="黑神话/IMG_20260118_141209.jpg" alt="角色印花定制咖啡">
+    </div>
+    <div class="photo-box">
+      <img src="黑神话/IMG_20260118_141557.jpg" alt="黑神话购物袋">
+    </div>
+    <div class="photo-box">
+      <img src="黑神话/IMG_20260118_143224.jpg" alt="黑子戏零食包">
+    </div>
+    <div class="caption-row">今日战利品清单，缺一不可</div>
+  </div>
+
+  <div class="pullquote">
+    这家店不只是在卖周边，它在认真地把一个中国人自己的神话世界，做成可以触摸的东西。
+    <cite>— 艺创小镇 · 黑神话零售店</cite>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ── CHAPTER 4 ── -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter 05</div>
+    <h2 class="chapter-title">傍晚·面与咖啡</h2>
+    <div class="chapter-sub">条态小馆 × 资董窝玺</div>
+  </div>
+
+  <p>从艺创小镇出来，找到了<em>条态小馆</em>。做的是台州菜，特色家烧——不是精致餐厅的路子，是那种有点油烟气、用料扎实、味道直接的家常功夫菜。点了招牌家烧，酱汁浓厚，配上一壶红茶，吃得踏实。</p>
+  <p>同一天下午还去了<em>苏面坊</em>，点了一碗蟹黄面——金黄的蟹黄堆在面上，汤底鲜甜，是杭州秋冬季节才有的那种时令味道，值得专程去吃一次。</p>
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="food/IMG_20260124_130456.jpg" alt="条态小馆 TIAOTAI 门面">
+    </div>
+    <div class="photo-box">
+      <img src="food/IMG_20260118_180106.jpg" alt="苏面坊蟹黄面">
+    </div>
+    <div class="caption-row">左：条态小馆·台州家烧，实在 &nbsp;·&nbsp; 右：苏面坊·蟹黄面，鲜</div>
+  </div>
+
+  <p>吃完饭绕去<em>资董窝玺</em>喝咖啡。玻璃门面朝着街道，里面折叠椅几张，菜单密密麻麻写在玻璃上。点了杯瑰夏——「Certificate of Authenticity」摆在台面上，是巴拿马艾利达庄园的限量批次，有编号。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="coffee/资董窝玺.jpg" alt="资董窝玺门面·菜单写在玻璃上">
+    </div>
+    <div class="photo-box">
+      <img src="coffee/资董窝玺 (2).jpg" alt="瑰夏品鉴·两只专业杯型对比">
+    </div>
+    <div class="caption-row">左：门面朴素，内有乾坤 &nbsp;·&nbsp; 右：窄口杯与宽口杯，同一支豆子两种表情</div>
+  </div>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:240px;">
+      <img src="coffee/资董窝玺 (3).jpg" alt="窄口/宽口杯型风味对比说明卡">
+    </div>
+    <p class="photo-caption">Inspire（窄口）增厚感留香，Excite（宽口）扩甜感增润滑——同一杯咖啡，不同容器，风味真的不同</p>
+  </div>
+
+  <p>服务员拿出一张卡片，详细说明了窄口杯（Inspire）和宽口杯（Excite）在甜感、香气、余韵、酸质上的差异，还递来两只不同杯型让我分别品。这杯咖啡被认真对待了，我也跟着认真起来。</p>
+
+  <div class="infobox">
+    <div class="infobox-title">📌 资董窝玺 小贴士</div>
+    <ul>
+      <li><span class="tag">地址</span>杭州市 · 清河坊附近，菜单写在玻璃门上，别走错</li>
+      <li><span class="tag">推荐</span>瑰夏（Geisha）限量批次，配真品证书，有编号</li>
+      <li><span class="tag">体验</span>可以要求用两种杯型分别品鉴，门道很深</li>
+      <li><span class="tag">气质</span>极简、专注、克制——精品咖啡该有的样子</li>
+    </ul>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ── CHAPTER 西湖 ── -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter 06</div>
+    <h2 class="chapter-title">傍晚·我在西湖</h2>
+    <div class="chapter-sub">西湖 · 湖滨步行街</div>
+  </div>
+
+  <p>说「这次来杭州，没有去西湖」——其实是骗你的。</p>
+
+  <p>咖啡喝完，天色将暗未暗，鬼使神差地走到了西湖边。湖滨步行街上空悬着一块巨型LED屏，红色大字：<em>「我在西湖」</em>。I AM AT WEST LAKE。人人都在抬头拍，但拍完之后，大家还是不由自主地转过头，看向湖的那一边。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="景色/IMG_20260118_213802.jpg" alt="我在西湖LED大字·步行街仰望">
+    </div>
+    <div class="photo-box">
+      <img src="景色/IMG_20260118_212809.jpg" alt="我在西湖全景·in77商场旁">
+    </div>
+    <div class="caption-row">这四个字说出了每个人在这里的心情</div>
+  </div>
+
+  <p>步行街的LEGO旗舰店橱窗里，有人用积木拼出了整个西湖：雷峰塔高高立着，三潭印月的石灯笼浮在水面，西湖的地标被一块一块拼成了玩具，却比许多宣传照更让人感受到这座城市的自豪。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:280px;">
+      <img src="景色/IMG_20260118_213959.jpg" alt="LEGO橱窗·积木搭建的西湖全景">
+    </div>
+    <p class="photo-caption">一砖一瓦拼出来的雷峰塔和三潭印月，认真程度远超大多数纪念品</p>
+  </div>
+
+  <p>Jordan的橱窗里挂着「UNBANNABLE 禁不住」的签名球鞋和T恤，步行街把各种文化符号混在一起，古典与潮流并排站着，谁也不觉得奇怪。旁边有一个巨型铜色金属球雕塑，镂空处露出内部的山水纹样，在紫粉色灯光的渲染下显得像一件当代艺术装置。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="景色/IMG_20260118_212809.jpg" alt="Jordan UNBANNABLE 签名展柜">
+    </div>
+    <div class="photo-box">
+      <img src="景色/IMG_20260118_214830.jpg" alt="金属球雕塑·紫色灯光">
+    </div>
+  </div>
+
+  <p>走到湖边，已经全黑了。<em>断桥</em>打着暖黄的灯，倒影浮在湖面，行人在桥上变成了剪影。更远处，宝俶塔的橙色灯光从山顶亮起，整片湖岸的树也被打了光，倒映在水里，成了另一个世界。这一刻忽然觉得，西湖最好的样子，大概就是这个——没有任何刻意，只是一座城市在夜里放松下来的样子。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:280px;">
+      <img src="景色/IMG_20260118_195920.jpg" alt="断桥夜景·暖灯倒影">
+    </div>
+    <p class="photo-caption">断桥的夜——不是那个白娘子等许仙的传说，只是冬夜里的一座桥</p>
+  </div>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:320px;">
+      <img src="景色/IMG_20260118_200219.jpg" alt="西湖夜景全景·宝俶塔灯光倒映湖面">
+    </div>
+    <p class="photo-caption">宝俶塔橙光映在湖里，树影成排，水天一色——这一刻的西湖不需要任何滤镜</p>
+  </div>
+
+  <div class="pullquote">
+    说好这次不去西湖，最后还是站在了湖边。有些地方的引力，不是靠计划来抵抗的。
+    <cite>— 西湖 · 冬夜</cite>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ── CHAPTER 5 ── -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter 07</div>
+    <h2 class="chapter-title">深夜·灵魂的毒药</h2>
+    <div class="chapter-sub">Hope Bar 西湖站</div>
+  </div>
+
+  <p><em>Hope Bar</em> 在西湖边不远处。门口招牌画着一个醉倒在马天尼杯里的小人，写着「酒是灵魂的毒药」——这家 bar 清楚地知道自己是干什么的。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="hope bar/IMG_20260118_220253.jpg" alt="Hope Bar 招牌·酒是灵魂的毒药">
+    </div>
+    <div class="photo-box">
+      <img src="hope bar/IMG_20260118_231543.jpg" alt="外立面·黑白火车车厢 + 春节限定编织装饰">
+    </div>
+  </div>
+
+  <p>外立面做成了一节黑白的火车车厢，春节前后特别铺了红绿粗线编织装饰，配着「财」字抱枕和元宝摆件，喜庆又荒诞。推门进去，坐进皮革包裹的仿火车卡座，深蓝色的墙上挂着金贝壳壁灯——像一趟开往西湖的慢车。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:300px;">
+      <img src="hope bar/IMG_20260118_221024.jpg" alt="仿火车卡座内景·深蓝墙+皮革座椅">
+    </div>
+    <p class="photo-caption">坐进去以后，有一种真的在火车上的错觉</p>
+  </div>
+
+  <p>菜单翻开，全是杭州的故事：「跳西湖」配文是「行政拘留7天，罚款200」；「月色较你终不敌」是糯米粽叶伏特加配澄清红豆牛奶。点了「<em>西湖醋鱼马天尼</em>」——旋蒸鱼汤金酒端上来，是一只青花瓷钵，白色酒液里印着一尾锦鲤，配一张写着鱼骨的薄脆饼，分子料理的手法，西湖文化的灵魂。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="hope bar/IMG_20260118_220507.jpg" alt="西湖醋鱼马天尼菜单页·92元/杯">
+    </div>
+    <div class="photo-box">
+      <img src="hope bar/IMG_20260118_221248.jpg" alt="西湖醋鱼马天尼·锦鲤浮在白色酒液里">
+    </div>
+    <div class="caption-row">酒如其名，鱼骨薄脆是最好的佐证</div>
+  </div>
+
+  <p>再来一杯「<em>冰糖葫芦</em>」，酒色是艳丽的石榴红，真的用一颗糖葫芦做装饰，甜中带涩，像在南宋御街一边走一边吃糖葫芦的那种感觉。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:300px;">
+      <img src="hope bar/IMG_20260118_224630.jpg" alt="冰糖葡芦鸡尾酒·石榴红">
+    </div>
+    <p class="photo-caption">古法冰糖葫芦朗姆酒 + 咖啡龙舌兰，这一杯把南宋御街装进去了</p>
+  </div>
+
+  <p>杯垫上写着：「主动干杯的人先富起来。」另一个杯垫写：「酒是你和最小的游乐园。」</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="hope bar/IMG_20260118_221430.jpg" alt="杯垫文案·主动干杯的人先富起来">
+    </div>
+    <div class="photo-box">
+      <img src="hope bar/IMG_20260118_221438.jpg" alt="杯垫·酒是你和最小的游乐园">
+    </div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-title">🍸 Hope Bar 创意鸡尾酒单（部分）</div>
+    <ul>
+      <li><span class="tag">已喝</span>西湖醋鱼马天尼 · 旋蒸鱼汤金酒 + 鱼骨饼，92元</li>
+      <li><span class="tag">已喝</span>南宋御街冰糖葫芦 · 古法冰糖葫芦朗姆酒，92元</li>
+      <li><span class="tag">推荐</span>跳西湖 · 玫瑰荷叶伏特加，梗是「行政拘留7天，罚款200」</li>
+      <li><span class="tag">推荐</span>月色较你终不敌 · 糯米粽叶伏特加 + 澄清红豆牛奶</li>
+    </ul>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ── CHAPTER 6 ── -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter 08</div>
+    <h2 class="chapter-title">再一夜·摩斯密码</h2>
+    <div class="chapter-sub">CODE Bar</div>
+  </div>
+
+  <p>另一个夜晚去了 <em>CODE Bar</em>。走进去第一眼就愣了——整个吧台是一座螺旋上升的黑色酒架，盘绕到天花板，各式洋酒在灯光里发着琥珀色的光，像一颗巨大的星系核心。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:360px;">
+      <img src="code bar/IMG_20260124_235414.jpg" alt="CODE Bar 螺旋酒塔·直冲天花板">
+    </div>
+    <p class="photo-caption">这个酒塔值得为它专程来一趟</p>
+  </div>
+
+  <p>酒端上来时，放在一片弯月形的木舟托盘里，配冻浆果和松枝。古铜色托盘的弧度像西湖的一叶扁舟，停在黑色大理石台面上。墙上是摩斯密码对照表，Since 2023，店名 CODE 如其所言——来这里，你需要解码一些什么。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="code bar/IMG_20260124_225410.jpg" alt="木舟形托盘鸡尾酒·配松枝和浆果">
+    </div>
+    <div class="photo-box">
+      <img src="code bar/IMG_20260124_235712.jpg" alt="摩斯密码主题墙·CODE 2023">
+    </div>
+    <div class="caption-row">左：一叶扁舟端着一杯故事 &nbsp;·&nbsp; 右：墙上的字母等你来解码</div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ── CHAPTER 7 ── -->
+  <div class="chapter">
+    <div class="chapter-num">Epilogue</div>
+    <h2 class="chapter-title">离去·一杯茶的尾声</h2>
+    <div class="chapter-sub">杭州东站</div>
+  </div>
+
+  <p>最后一天早上，在杭州东站候车厅，买了一杯霸王茶姬的「<em>风荷曲苑·浙江限定</em>」——荷花图案的杯子，标签上写着「以东方茶，会世界友」。坐上高铁，捧着杯子，窗外的杭州在阴天里慢慢退远。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:280px;">
+      <img src="food/IMG_20260119_095334.jpg" alt="霸王茶姬·风荷曲苑浙江限定">
+    </div>
+    <p class="photo-caption">最后一杯——离杭，向西湖说了句「下次见」</p>
+  </div>
+
+  <p>路边有个蓝色的配电箱，上面画着一个卡通小女孩，举着牌子写：「再见 Good Bye」，旁边是一个对话泡泡：「I ❤ Hang Zhou」。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:260px;">
+      <img src="景色/IMG_20260118_232217.jpg" alt="街边配电箱涂鸦·I ❤ Hang Zhou / 再见 Good Bye">
+    </div>
+    <p class="photo-caption">这座城市连配电箱都在说再见，又在说期待</p>
+  </div>
+
+  <p>这次来，竹林走过了，西湖也看了，黑神话朝圣了，鸡尾酒喝了两家，面吃了三碗，咖啡喝了一杯极其认真的。</p>
+  <p>杭州够大，大到一条中山中路就能走出好几个故事，一家酒吧能把整座城的气质装进一杯酒里，一家咖啡馆能让你认真对待一粒豆子，一个游戏展厅能让你站在那里忘记时间。</p>
+
+  <div class="pullquote">
+    等下次来，再去湖边坐坐。
+    <cite>— 杭州 · 2026年1月</cite>
+  </div>
+
+</div>
+
+<div class="article">
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ── AFTERWORD ── -->
+  <div class="chapter">
+    <div class="chapter-num">Afterword</div>
+    <h2 class="chapter-title">后记·去了但不太推荐</h2>
+    <div class="chapter-sub">一些诚实的补充</div>
+  </div>
+
+  <p>游记写到这里，还有几个地方去了，但没有写进正文。不是因为不好，是因为对我来说没有特别值得专程再去一次——留在这里，算是一点诚实的参考。</p>
+
+  <p><em>浙江省博物馆</em>，新馆很大，入口的金属犀牛雕塑气势足，馆内的越王者旨於賜剑是真正的镇馆之宝——春秋时期的青铜剑，丝绳缠柄至今保存，剑身嵌绿松石，两千多年前的东西安静地躺在展柜里，让人站那里看了很久。近代史部分有浙江省立第一师范学校的门楼复原，砖拱细节做得相当用心。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="省博不推荐/IMG_20260118_161915.jpg" alt="浙江省博物馆外观·金属犀牛雕塑">
+    </div>
+    <div class="photo-box">
+      <img src="省博不推荐/IMG_20260118_162833.jpg" alt="越王者旨於賜剑·春秋青铜剑">
+    </div>
+  </div>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="省博不推荐/IMG_20260118_165645.jpg" alt="近代纺织机展厅">
+    </div>
+    <div class="photo-box">
+      <img src="省博不推荐/IMG_20260118_165650.jpg" alt="浙江省立第一师范学校门楼复原">
+    </div>
+    <div class="caption-row">但总体来说，省博面积太大，馆内人流密，走完很耗体力——如果时间有限，不如把精力留给街道本身</div>
+  </div>
+
+  <p><em>西溪湿地公园</em>正值探梅节，入口摆着大红灯笼和汉服卡通人偶，节庆气氛浓。坐了摇橹船，从木窗望出去，枯树、石桥、烟水，确实有几分江南水乡的意思。但冬天的湿地植被萧条，芦苇也已褪色，如果不是花季，景色略显空旷，值不值门票要看时机。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="湿地公园不推荐/IMG_20260124_143551.jpg" alt="西溪湿地·2026探梅节入口装置">
+    </div>
+    <div class="photo-box">
+      <img src="湿地公园不推荐/IMG_20260124_151505.jpg" alt="摇橹船上望出去·枯枝烟水石桥">
+    </div>
+    <div class="caption-row">坐船那一刻很美，但门票偏贵，冬季不是最佳时机</div>
+  </div>
+
+  <p>最后说说<em>GiveMeFive</em>。门口挂着「能饮一杯无」的霓虹招牌，竹影绿植围着，入门就有一种「误入小院」的感觉。墙上挂着一幅草书大字，写的是西湖醋鱼和酒的句子，酒柜瓶子密密麻麻，台上还摆着一只整支火腿，像是完全不在乎规则的地方。</p>
+
+  <div class="photo-grid two">
+    <div class="photo-box">
+      <img src="gigivemefive不推荐/IMG_20260118_002947.jpg" alt="GiveMeFive门口·能饮一杯无霓虹">
+    </div>
+    <div class="photo-box">
+      <img src="gigivemefive不推荐/IMG_20260118_003448.jpg" alt="吧台全景·草书大字·满墙酒瓶·猪腿">
+    </div>
+  </div>
+
+  <p>点了一壶茶式调酒，白瓷茶壶配荷叶形高脚杯，托盘还摆着一朵紫罗兰，盛酒的器具比酒本身更像艺术品。喝起来偏甜，不是我最喜欢的方向，但整个空间的调性是对的——有点古典，有点散漫，有点自顾自的态度。</p>
+
+  <div class="photo">
+    <div class="photo-box" style="min-height:280px;">
+      <img src="gigivemefive不推荐/IMG_20260118_003534.jpg" alt="茶壶鸡尾酒·荷叶高脚杯+紫罗兰装饰">
+    </div>
+    <p class="photo-caption">用喝茶的方式喝酒——这件事本身就值得来一次</p>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-title">📋 后记总结</div>
+    <ul>
+      <li><span class="tag">省博</span>越王剑值得专程，其余展厅体力消耗大，时间充裕再去</li>
+      <li><span class="tag">西溪</span>摇橹船体验不错，但冬季景色一般，梅花季或夏季更值</li>
+      <li><span class="tag">GMF</span>「能饮一杯无」空间氛围好，茶式调酒颜值高，但口味偏甜</li>
+    </ul>
+  </div>
+
+</div><!-- /article afterword -->
+
+<!-- FOOTER -->
+<div class="foot">
+  <div style="margin-bottom:12px;font-size:16px;color:var(--warm);font-style:normal;">杭州，不只是西湖</div>
+  <div>游记图文 · 2026年1月 · <strong>南宋御街 · 艺创小镇 · 清河坊 · Hope Bar · CODE Bar</strong></div>
+  <div style="margin-top:8px;font-size:11px;opacity:0.5;">图片占位符请替换为对应照片文件</div>
+</div>
+
+</body>
+</html>
