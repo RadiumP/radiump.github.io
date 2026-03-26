@@ -7,7 +7,9 @@
       "Bash(grep -l console. /d/github/radiump.github.io/*.html /d/github/radiump.github.io/js/*.js)",
       "Bash(grep -v \":0$\")",
       "Bash(find /d/github/radiump.github.io -name *.html -type f -exec wc -l {} +)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(ls D:/github/radiump.github.io/dataviz/*.html)",
+      "WebFetch(domain:api.pixellab.ai)"
     ]
   }
 }

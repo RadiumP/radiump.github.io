@@ -26,12 +26,13 @@
 	text-align: center;
 	text-transform: uppercase;
 	text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.6);
-	letter-spacing: 3px;
+	letter-spacing: 2px;
+	text-indent: 2px;
 	font-weight: 700;
-	transform: scale(0.9);
+	transform: scale(0.85);
 	transition: all 0.3s ease;
 	border-radius: 4px;
-	margin: 0 40px;
+	margin: 0 20px;
 	padding: 2px 0;
 }
 .bmenu:hover li a{
@@ -42,5 +43,6 @@
 	background: rgba(0,128,128,0.5);
 	transform: scale(1);
 	text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.6);
-	letter-spacing: 5px;
+	letter-spacing: 2px;
+	text-indent: 2px;
 }
