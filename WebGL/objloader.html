@@ -5,7 +5,6 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel = "stylesheet" type = "text/css" href ="style.css">
         <title>OBJLoader + Phong Shading</title>
-		
 	</head>
 	<body>
         <div id="dat">
@@ -14,59 +13,56 @@
         <div id="glFullscreen">
 			<canvas id="scene"></canvas>
 		</div>
-        
+
         <input id="fileUploadInput" type="file" name="files[]" multiple accept=".obj,.mtl" />
-        
+
 		<script src="3js/build/three.js"></script>
         <script src="3js/examples/js/loaders/MTLLoader.js"></script>
-        <script src="3js/examples/js/loaders/OBJLoader2.js"></script>
-        <script src="3js/examples/js/loaders/WWOBJLoader2.js"></script>
+        <script src="3js/examples/js/loaders/OBJLoader.js"></script>
         <script src="3js/examples/js/libs/dat.gui.min.js"></script>
         <script src="3js/examples/js/controls/OrbitControls.js"></script>
         <script src="3js/examples/js/libs/stats.min.js"></script>
-        <script src="3js/examples/js/shaders/SSAOShader.js"></script>
-        <script src="ssao.js"></script>
         <script src="3js/examples/js/shaders/CopyShader.js"></script>
         <script src="3js/examples/js/postprocessing/EffectComposer.js"></script>
         <script src="3js/examples/js/postprocessing/RenderPass.js"></script>
         <script src="3js/examples/js/postprocessing/ShaderPass.js"></script>
-        
+
         <!--PHONG shaders-->
         <script id="phongvs" type="x-shader/x-vertex">
 			varying vec3 vecPos;
             varying vec3 vecNormal;
-            
+
             void main()	{
                 vecPos = (modelViewMatrix * vec4( position, 1.0 )).xyz;
                 vecNormal = (modelViewMatrix * vec4(normal, 0.0)).xyz;
-				
+
                 gl_Position = projectionMatrix *  vec4( vecPos, 1.0 );
 			}
 		</script>
-        
+
         <script id="phongfs" type="x-shader/x-fragment">
             precision highp float;
-            
+
             uniform int mode;
-            
+
 			varying vec3 vecPos;
             varying vec3 vecNormal;
              struct PointLight{
                 vec3 color;
-                vec3 position; 
+                vec3 position;
                 float distance; //for attenuation
             };
             uniform PointLight pointLights[NUM_POINT_LIGHTS];
-           
+
 			void main()	{
-                
+
                 //Bronze
 			    vec3 ambient = vec3(0.2125,0.1275,0.054);
                 vec3 diffuse = vec3(0.714,	0.4284,	0.18144);
                 vec3 specular = vec3(0.393548,	0.271906,	0.166721);
                 if(mode == 1)diffuse = vec3(1.0,	0.0,	1.0);
                 float shininess = 25.6;
-                
+
                 for(int l = 0; l < NUM_POINT_LIGHTS; l++) {
                     vec3 lightDirection = normalize(vecPos - pointLights[l].position);
                     vec3 reflectDirection = normalize(-(lightDirection - 2.0 * dot(vecNormal,lightDirection) * vecNormal));
@@ -75,39 +71,26 @@
                     diffuse = clamp(diffuse, 0.0, 1.0);
                     specular *= pow(max(dot(reflectDirection,ed),0.0), shininess);
                 }
-                
-				//TEST: color red
-                //gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-                
-                
+
                 vec3 color = ambient + diffuse + specular;
-                
-                //TEST: individual components
-                //gl_FragColor = vec4(ambient, 1.0);
-                //gl_FragColor = vec4(diffuse, 1.0);
-                //gl_FragColor = vec4(specular, 1.0);
-                
-                //mode: for renderMode
+
                 if(mode == 0)gl_FragColor = vec4(color, 1.0);
                 else if(mode == 1)gl_FragColor = vec4(diffuse, 1.0);
 			}
 		</script>
-        
-        
+
 		<script>
-           
+
            //Class start
            var OBJRenderer = (function () {
-               
-               //format validator
-               var Validator = THREE.OBJLoader2.prototype._getValidator();
+
                //constructor
                function OBJRenderer(target){
                    this.renderer = null;
                    this.canvas = target;
                    this.scene = null;
                    this.controls = null;
-                   
+
                    this.aspectRatio = 1;
                    this.updateAsRatio();
 
@@ -121,64 +104,44 @@
                    this.camera = null;
                    this.cameraTarget = this.cameraDefaults.posCameraTarget;
                    this.renderMode = 0;
+
                    //Materials
-                   
-                   this.phongMat = new THREE.ShaderMaterial( { 
+                   this.phongMat = new THREE.ShaderMaterial( {
                            uniforms: {mode: {type:'i', value:0 }},
                            vertexShader: document.getElementById( 'phongvs' ).textContent,
                            fragmentShader: document.getElementById( 'phongfs' ).textContent
-                           
-                   } );//CARE: wont read if shaders are behind
-                   
-                   this.ambientMat = new THREE.ShaderMaterial( { 
+                   } );
+
+                   this.ambientMat = new THREE.ShaderMaterial( {
                            uniforms: {mode: {type:'i', value:1 }},
                            vertexShader: document.getElementById( 'phongvs' ).textContent,
                            fragmentShader: document.getElementById( 'phongfs' ).textContent
-                           
                    } );
-                   
+
                    this.mat = this.phongMat;
-                   this.mat.needsUpdate = true; 
+                   this.mat.needsUpdate = true;
                    this.phongMat.needsUpdate = true;
                    this.ambientMat.needsUpdate = true;
-                   
-                   //AO: post-processing, depthTexture
-                   this.depthMaterial = null;
-                   this.effectComposer = null;
-                   this.depthRenderTarget = null;
-                   this.ssaoPass = null;
-                   this.noiseTexture = null;
-                   
-                   
+
                    //Options
                    this.grid = true;
-                   this.AO = true;
-                   
-                   
-                   //cube for testing
-                   //this.cube = null;
-                   
+
                    this.pivot = null;
 
-				   this.wwObjLoader2 = new THREE.OBJLoader2.WWOBJLoader2();
-                   //CROS
-				   this.wwObjLoader2.setCrossOrigin( 'anonymous' );
-                   
-                  
+                   // OBJ + MTL loaders
+                   this.objLoader = new THREE.OBJLoader();
+                   this.mtlLoader = new THREE.MTLLoader();
+
                    // Check for the various File API support.
                    this.fileApiAvailable = true;
                    if ( window.File && window.FileReader && window.FileList && window.Blob ) {
-
                         console.log( 'File API is supported! Enabling all features.' );
-
                    } else {
-
                         this.fileApiAvailable = false;
                         console.warn( 'File API is not supported! Disabling file loading.' );
-
                    }
                }
-               
+
                //init WebGL
                OBJRenderer.prototype.init = function(){
                    //init renderer
@@ -187,255 +150,143 @@
 						antialias: true,
 						autoClear: true
 					} );
-                   this.renderer.setClearColor( 0xBEBEBE );//gray background
+                   this.renderer.setClearColor( 0xBEBEBE );
+
                    //init scene
 				   this.scene = new THREE.Scene();
+
                    //init perspective cam
                    this.camera = new THREE.PerspectiveCamera( this.cameraDefaults.fov, this.aspectRatio, this.cameraDefaults.near, this.cameraDefaults.far );
 				   this.resetCamera();
-                   
+
                    //OrbitControl
 				   this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement );
-                   
-                   //CONTROL SETTINGS
-                   //this.controls.enablePan = true;
-//                   this.controls.minDistance = 1000.0;
-//                   this.controls.maxDistance = 5000.0;
-//                   this.controls.maxPolarAngle = Math.PI * 0.495;
-//                   this.controls.target.set( 0, 500, 0 );
-//                
-                   //basic lighting
+
                    //Point Lights
-                   var pointLight1 = new THREE.PointLight( 0xFFFFFF,1.0 );
-                   var pointLight2 = new THREE.PointLight( 0xFFFFFF,1.0 );
-                   
+                   var pointLight1 = new THREE.PointLight( 0xFFFFFF, 1.0 );
+                   var pointLight2 = new THREE.PointLight( 0xFFFFFF, 1.0 );
+
                    pointLight1.position.set( -20, -10, 20 );
                    pointLight2.position.set( 20, 10, -20 );
-                   
+
                    this.scene.add( pointLight1 );
                    this.scene.add( pointLight2 );
-                   
-                   
+
                    //add grid
                     this.helper = new THREE.GridHelper( 1200, 60, 0xFF4444, 0x404040 );
                     this.helper.name = 'grid';
 				    this.scene.add(this.helper);
-                   
-                    
-                   
-                   
-                   //TEST: cube for testing
-//                  var geometry = new THREE.BoxGeometry( 10, 10, 10 );
-//					var material = new THREE.MeshNormalMaterial();
-//					this.cube = new THREE.Mesh( geometry, material );
-//					this.cube.position.set( 0, 0, 0 );
-//					this.scene.add( this.cube );
-                   
-                   this.createPivot();
+
+                    this.createPivot();
                };
-               
-               //attach shader material
-               OBJRenderer.prototype.postProc = function(){
-                   //Attach shader material
-                   this.wwObjLoader2.clearAllCallbacks();
-                   var scope = this;//CARE!!!
-                   var callbackMeshLoaded = function (name,Buffer,material ) {
-				       
-                      
-                       
-				       return new THREE.OBJLoader2.WWOBJLoader2.LoadedMeshUserOverride( false, undefined, scope.mat );
-					};
-                   this.wwObjLoader2.registerCallbackMeshLoaded( callbackMeshLoaded);
-                   
-                   return true;
-               };
-               
-               //init post-processing
-               OBJRenderer.prototype.initPostProc = function(){
-                   var renderPass = new THREE.RenderPass( this.scene, this.camera );
-                   
-                   // Setup depth pass
-                   this.depthMaterial = new THREE.MeshDepthMaterial();
-                   this.depthMaterial.depthPacking = THREE.RGBADepthPacking;
-                   this.depthMaterial.blending = THREE.NoBlending;
-                   var pars = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter };
-                   this.depthRenderTarget = new THREE.WebGLRenderTarget( this.canvas.offsetWidth, this.canvas.offsetHeight, pars );    
-                   this.depthRenderTarget.texture.name = "SSAOShader.rt";
-                   
-                   //init kernal
-                   
-                   var kernel = [];
-                   var kernelSize = 16;
-                   var sample = new THREE.Vector3( );
-                   for(var i=0; i<kernelSize; i++) {
-                       sample.setX(2.0 * (Math.random() - 0.5));
-                       sample.setY(2.0 * (Math.random() - 0.5));
-                       sample.setZ(Math.random());
-                       sample.normalize();
-                       
-                       sample.addScalar(Math.random());
-                       var scale = i / 16.0;    
-                       //lerp
-                       scale = 0.1 + scale * scale * 0.9;
-                       sample.addScalar(scale);
-                       kernel.push(sample.x);
-                       kernel.push(sample.y);
-                       kernel.push(sample.z);	
-                            
-                   }
-                   
-                   //gen noise texture
-                   var pixels = new Uint8Array(4*4);
-                    for(var y=0; y<4; y++) {  
-                        for(var x=0; x<4; x++) {
-                            pixels[y*4 + x] = Math.floor(Math.random()*255);
-                        }
-  } 
-                   this.noiseTexture = new THREE.DataTexture( pixels,4,4, THREE.RGBFormat);
-                   this.noiseTexture.needsUpdate = true;
-                   
-                   var noiseScale = [this.canvas.offsetWidth/4, this.canvas.offsetHeight/4];
-                   
-                   // Setup SSAO pass
-                   this.ssaoPass = new THREE.ShaderPass( THREE.SSAOShader );
-                   this.ssaoPass.renderToScreen = true;
-                   
-                   //ssaoPass.uniforms[ "tDiffuse" ].value will be set by ShaderPass
-                   this.ssaoPass.uniforms[ "tDepth" ].value = this.depthRenderTarget.texture;
-                   
-                   this.ssaoPass.uniforms[ 'size' ].value.set( this.canvas.offsetWidth, this.canvas.offsetHeight );
-                   this.ssaoPass.uniforms[ 'cameraNear' ].value = this.camera.near;
-                   this.ssaoPass.uniforms[ 'cameraFar' ].value = this.camera.far;
-                   
-                   this.ssaoPass.uniforms[ 'aoClamp' ].value = 0.5;
-                   this.ssaoPass.uniforms[ 'lumInfluence' ].value = 1.0;
-                   this.ssaoPass.uniforms[ 'onlyAO' ].value = (this.renderMode);
-                   
-//                   this.ssaoPass.uniforms[ "tNoise" ].value = this.noiseTexture;
-//                   this.ssaoPass.uniforms["kernel"].value = kernel;
-//                   this.ssaoPass.uniforms["noiseScale"].value = noiseScale;
-//                   this.ssaoPass.uniforms["aspectRatio"].value = this.aspectRatio;
-//                   this.ssaoPass.uniforms[ 'fov' ].value = this.camera.fov * Math.PI / 180.0;
-                   
-                   // Add pass to effect composer
-                   this.effectComposer = new THREE.EffectComposer( this.renderer );
-                   this.effectComposer.addPass( renderPass );
-                   this.effectComposer.addPass( this.ssaoPass );
-                   
-               };
-             
-               
+
                OBJRenderer.prototype.createPivot = function(){
-                   //init pivot for objloader2
                    this.pivot = new THREE.Object3D();
                    this.pivot.name = 'Pivot';
                    this.scene.add( this.pivot );
                }
-               
-               OBJRenderer.prototype.loadFiles = function(prepData){
-                   prepData.setSceneGraphBaseNode( this.pivot );
-                   //stream?
-                   this.wwObjLoader2.prepareRun( prepData );
-                   this.wwObjLoader2.run();
+
+               // Load OBJ + MTL from paths
+               OBJRenderer.prototype.loadFiles = function(objPath, objFile, mtlPath, mtlFile){
+                   var scope = this;
+
+                   if (mtlFile) {
+                       this.mtlLoader.setPath(mtlPath);
+                       this.mtlLoader.load(mtlFile, function(materials) {
+                           materials.preload();
+                           scope.objLoader.setMaterials(materials);
+                           scope.objLoader.setPath(objPath);
+                           scope.objLoader.load(objFile, function(object) {
+                               // Apply custom shader material
+                               object.traverse(function(child) {
+                                   if (child.isMesh) {
+                                       child.material = scope.mat;
+                                   }
+                               });
+                               scope.pivot.add(object);
+                           });
+                       });
+                   } else {
+                       scope.objLoader.setPath(objPath);
+                       scope.objLoader.load(objFile, function(object) {
+                           object.traverse(function(child) {
+                               if (child.isMesh) {
+                                   child.material = scope.mat;
+                               }
+                           });
+                           scope.pivot.add(object);
+                       });
+                   }
                };
-               
-               //file handling
-               OBJRenderer.prototype.fileHandler = function(event, pathTexture){
-                   //obj, mtl
+
+               //file handling from user upload
+               OBJRenderer.prototype.fileHandler = function(event){
                    var fileObj = null;
                    var fileMtl = null;
-                   
+                   var scope = this;
+
                    var files = event.target.files;
-                   //extract file from input
-                   for(var i = 0, file; file = files[i]; i++){
-                       if ( file.name.indexOf( '\.obj' ) > 0 && fileObj === null ) {
+                   for(var i = 0; i < files.length; i++){
+                       var file = files[i];
+                       if ( file.name.indexOf('.obj') > 0 && fileObj === null ) {
 							fileObj = file;
 						}
-
-						if ( file.name.indexOf( '\.mtl' ) > 0 && fileMtl === null ) {
+						if ( file.name.indexOf('.mtl') > 0 && fileMtl === null ) {
 							fileMtl = file;
 						}
                    }
-                   
-                   if ( ! Validator.isValid( fileObj ) ) {
+
+                   if ( !fileObj ) {
 						alert( 'Unable to load OBJ file from given files.' );
+                        return;
                    }
-                   
-                   var fileReader = new FileReader();
-					fileReader.onload = function( fileDataObj ) {
 
-						var uint8Array = new Uint8Array( fileDataObj.target.result );
-						if ( fileMtl === null ) {
-                            //CARE
-							loading.loadFilesUser({
-								name: 'userObj',
-								objAsArrayBuffer: uint8Array,
-								pathTexture: pathTexture,
-								mtlAsString: null
-							})
+                   var objReader = new FileReader();
+                   objReader.onload = function( e ) {
+                       var objText = e.target.result;
 
-						} else {
-                            fileReader.onload = function( fileDataMtl ) {
-                                //CARE
-								loading.loadFilesUser({
-									name: 'userObj',
-									objAsArrayBuffer: uint8Array,
-									pathTexture: pathTexture,
-									mtlAsString: fileDataMtl.target.result
-								})
-							};
-							fileReader.readAsText( fileMtl );
+                       if ( fileMtl ) {
+                           var mtlReader = new FileReader();
+                           mtlReader.onload = function( em ) {
+                               var mtlText = em.target.result;
+                               var mtlCreator = new THREE.MTLLoader.MaterialCreator();
+                               mtlCreator.setMaterials( new THREE.MTLLoader().parse( mtlText ) );
 
-                        }
-                    };
-                   fileReader.readAsArrayBuffer( fileObj );
+                               var loader = new THREE.OBJLoader();
+                               var object = loader.parse( objText );
+                               object.traverse(function(child) {
+                                   if (child.isMesh) {
+                                       child.material = scope.mat;
+                                   }
+                               });
+                               scope.pivot.add(object);
+                           };
+                           mtlReader.readAsText( fileMtl );
+                       } else {
+                           var loader = new THREE.OBJLoader();
+                           var object = loader.parse( objText );
+                           object.traverse(function(child) {
+                               if (child.isMesh) {
+                                   child.material = scope.mat;
+                               }
+                           });
+                           scope.pivot.add(object);
+                       }
+                   };
+                   objReader.readAsText( fileObj );
                };
-               
-               //Load obj from input
-               OBJRenderer.prototype.loadFilesUser = function(objDef){
-                   var prepData = new THREE.OBJLoader2.WWOBJLoader2.PrepDataArrayBuffer(
-						objDef.name, objDef.objAsArrayBuffer, objDef.pathTexture, objDef.mtlAsString
-					);
-                   prepData.setSceneGraphBaseNode( this.pivot );
-                   
-                   //prepData.setStreamMeshes( this.streamMeshes );
-                   
-                   this.wwObjLoader2.prepareRun( prepData );    
-                   this.wwObjLoader2.run(); 
-               }
-               
-               //Handling window resize and canvas resize
+
+               //Handling window resize
                OBJRenderer.prototype.resizeDisplayGL = function () {
-					
-
                    this.updateAsRatio();
-                   this.renderer.setSize( this.canvas.offsetWidth, this.canvas.offsetHeight, false );                    
+                   this.renderer.setSize( this.canvas.offsetWidth, this.canvas.offsetHeight, false );
                    this.updateCamera();
-                   
-                   //post-processing
-                   this.resizeRenderTargets();
-                   
 				};
-               
-               //resize target
-               OBJRenderer.prototype.resizeRenderTargets = function () {
-                   var height = this.canvas.offsetHeight;
-                   var width = this.canvas.offsetWidth;
-                   
-                   this.ssaoPass.uniforms[ 'size' ].value.set( width, height );
-                   var pixelRatio = this.renderer.getPixelRatio();
-                   var newWidth  = Math.floor( width / pixelRatio ) || 1;
-                   var newHeight = Math.floor( height / pixelRatio ) || 1;
-                   this.depthRenderTarget.setSize( newWidth, newHeight );
-                   this.effectComposer.setSize( newWidth, newHeight );
-               };
-               
-               
+
                //Clear Scene
                OBJRenderer.prototype.clearAllAssests = function () {
 					var scope = this;
 					var remover = function ( object3d ) {
-
 						if ( object3d === scope.pivot ) {
 							return;
 						}
@@ -446,15 +297,11 @@
 							object3d.geometry.dispose();
 						}
 						if ( object3d.hasOwnProperty( 'material' ) ) {
-
 							var mat = object3d.material;
 							if ( mat.hasOwnProperty( 'materials' ) ) {
-
 								var materials = mat.materials;
 								for ( var name in materials ) {
-
 									if ( materials.hasOwnProperty( name ) ) materials[ name ].dispose();
-
 								}
 							}
 						}
@@ -462,245 +309,156 @@
 							object3d.texture.dispose();
 						}
 					};
-                   
+
                    scope.scene.remove( scope.pivot );
 					scope.pivot.traverse( remover );
 					scope.createPivot();
 				};
-               
+
                //Update AspectRatio
                OBJRenderer.prototype.updateAsRatio = function(){
                    this.aspectRatio = ( this.canvas.offsetHeight === 0 ) ? 1 : this.canvas.offsetWidth / this.canvas.offsetHeight;
                };
-               
+
                //Pre-Set Camera
                 OBJRenderer.prototype.resetCamera = function () {
 					this.camera.position.copy( this.cameraDefaults.posCamera );
 					this.cameraTarget.copy( this.cameraDefaults.posCameraTarget );
-
 					this.updateCamera();
 				};
-               
+
                //Update Camera
                OBJRenderer.prototype.updateCamera = function(){
                    this.camera.aspect = this.aspectRatio;
                    this.camera.lookAt( this.cameraTarget );
                    this.camera.updateProjectionMatrix();
                }
-               
-               //loop
+
+               //render loop
                OBJRenderer.prototype.render = function () {
 					if ( ! this.renderer.autoClear ) this.renderer.clear();
-
 					this.controls.update();
-                    
-                    //cube for testing
-					//this.cube.rotation.x += 0.05;
-					//this.cube.rotation.y += 0.05;
-                    if(this.AO){
-                        this.scene.overrideMaterial = this.depthMaterial;
-                        this.renderer.render( this.scene, this.camera,this.depthRenderTarget,true );
-                        
-                        //this.scene.overrideMaterial = null;
-                        this.effectComposer.render();
-                        
-                    }else{
-                        this.renderer.render( this.scene, this.camera );
-                    }
-					
+                    this.renderer.render( this.scene, this.camera );
 				};
-               
+
                //Toggle Grid
                OBJRenderer.prototype.alterGrid = function () {
-                   var scope = this;
-                   
-                   scope.grid = ! scope.grid;
-                   
-                   //TEST
-                   //console.log('Grid:' + scope.grid);
-                   
-                   if(!scope.grid){
-                       var selectedObject = scope.scene.getObjectByName('grid');
-                       scope.scene.remove(selectedObject);
+                   this.grid = ! this.grid;
+                   if(!this.grid){
+                       var selectedObject = this.scene.getObjectByName('grid');
+                       this.scene.remove(selectedObject);
                    }else{
-                       scope.scene.add(scope.helper);
+                       this.scene.add(this.helper);
                    }
-                   
                };
-               	
-               
-               
+
                //Toggle Rendering Mode
                OBJRenderer.prototype.alterMode = function(mode){
                    var scope = this;
-                   if(mode == 0) 
-                   {
+                   if(mode == 0) {
                        scope.mat = scope.phongMat;
-                       this.renderMode = 0;
-                       this.ssaoPass.uniforms[ 'onlyAO' ].value = 0;
-                   }
-                   else if(mode == 1) {
+                   } else if(mode == 1) {
                        scope.mat = scope.ambientMat;
-                       this.ssaoPass.uniforms[ 'onlyAO' ].value = 1;
-                      
                    }
-                   //scope.postProc();
-                   
-                   //Traverse the children to change material
-                    var selectedObject = scope.scene.getObjectByName('Pivot');
-                    var meshes = selectedObject.children;
-                       meshes.forEach(function(item){
-                           console.log(item);
-                           item.material = scope.mat ;
+
+                   // Traverse children to change material
+                   var selectedObject = scope.scene.getObjectByName('Pivot');
+                   if (selectedObject) {
+                       selectedObject.traverse(function(child){
+                           if (child.isMesh) {
+                               child.material = scope.mat;
+                           }
                        });
-                       
-                   
+                   }
                };
-               
-               //Toggle AO Mode
-               OBJRenderer.prototype.alterAO = function(){
-                   var scope = this;                   
-                   scope.AO = ! scope.AO;
-//                   if(!scope.AO){
-//                      
-//                   }else{
-//                       
-//                   }
-               }
-               
-               
+
                return OBJRenderer;
            })();//Class end
-               
+
             //MAIN RENDERING PIPELINE
-            //Instance
             var loading = new OBJRenderer(document.getElementById( 'scene' ));
-            
-            
-            
+
             //FPS
             var container, stats;
             container = document.createElement( 'div' );
             document.body.appendChild( container );
             stats = new Stats();
             container.appendChild( stats.dom );
-            
-            
-            //looping
+
+            //loop
             var animate = function () {
                 requestAnimationFrame( animate );
                 stats.update();
                 loading.render();
             };
-            
-            //INIT GUI            
+
+            //INIT GUI
             var fileInput = document.getElementById( 'fileUploadInput' );
-            
-            //ADD new UI options here:
+
             var UICtrl = function() {
-                this.AO = loading.AO;  
                 this.grid = loading.grid;
                 this.renderMode = loading.renderMode;
-                
             };
             var uiCtrl = new UICtrl();
-            
+
             var gui = new dat.GUI({
                 autoPlace:false,
                 width:320
             });
-            
-            //ADD Menu
+
             var menuDiv = document.getElementById( 'dat' );
 			menuDiv.appendChild(gui.domElement);
             var folderOptions = gui.addFolder( 'Options' );
-            
+
             //GRID
             var showGrid = folderOptions.add(uiCtrl, 'grid').name('Show Grid');
             showGrid.onChange(function(){
                 loading.alterGrid();
             });
-            
-           //RENDERING MODE:  AmbientOnly, Phong
+
+            //RENDERING MODE
             var renderMode = folderOptions.add(uiCtrl, 'renderMode', {Phong:0, DiffuseOnly:1}).name('Render Mode');
             renderMode.onChange(function(value){
-                if ( value == 0 ) {
-					// framebuffer
-                    loading.alterMode(0);
-                    
-                    
-				} else if ( value == 1 ) {
-					// onlyAO
-                    loading.alterMode(1);
-                   
-				} else {
-					console.error( "Not define renderModeChange type: " + value );
-				}
-                
+                loading.alterMode(parseInt(value));
             });
-            
-            //AO MODE
-            var aoMode = folderOptions.add(uiCtrl, 'AO').name('AO');
-            aoMode.onChange(function(){
-               loading.alterAO(); 
-            });
-            
+
             //LOAD FILE/CLEAR SCENE
             if(loading.fileApiAvailable){
-                //get input file
                 uiCtrl.loadObjFile = function(){
                     fileInput.click();
                 }
                 folderOptions.add(uiCtrl, 'loadObjFile').name('Load OBJ Files');
-                
-                var handleFile = function(object3d){
-                    loading.fileHandler(object3d, uiCtrl.pathTexture);
+
+                var handleFile = function(event){
+                    loading.fileHandler(event);
                 };
                 fileInput.addEventListener( 'change' , handleFile, false );
-                
-                //CLEAR ALL
+
                 uiCtrl.clearAllAssests = function () {
 					loading.clearAllAssests();
 				};
 				folderOptions.add( uiCtrl, 'clearAllAssests' ).name( 'Clear Scene' );
-                
             }
-            
-            
+
             folderOptions.open();
-            
+
             //init rendering
             var resizeWindow = function(){
                 loading.resizeDisplayGL();
-            }       
-            
-            
+            }
+
             window.addEventListener( 'resize', resizeWindow, false );
-            
-            
-            loading.init();  
-            loading.initPostProc();
+
+            loading.init();
             loading.resizeDisplayGL();
-            
-            loading.postProc();
-            
-            
+
             //DEFAULT OBJ + MTL
-            var prepData = new THREE.OBJLoader2.WWOBJLoader2.PrepDataFile(
-				'monkey',
-				'obj/',
-				'myMonkey.obj',
-				'obj/',
-				'myMonkey.mtl'
-			);
-            loading.loadFiles(prepData);
-            
+            loading.loadFiles('obj/', 'myMonkey.obj', 'obj/', 'myMonkey.mtl');
+
             //loop
             animate();
-            
-		</script>
-        
 
+		</script>
 
 	</body>
 </html>

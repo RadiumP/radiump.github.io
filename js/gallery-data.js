@@ -33,7 +33,7 @@ var GALLERY_DATA = {
                 image: "images/webhbao.png",
                 title: "AO with PN-Triangles",
                 subtitle: "Interactive WebGL",
-                description: 'Followed the same OpenGL pipeline to implement the most popular image-based AO algorithms on WebGL with smoothing to find the bottlenecks and  optimizations.'
+                description: 'Followed the same OpenGL pipeline to implement the most popular image-based AO algorithms on WebGL with smoothing to find the bottlenecks and  optimizations.<a href="https://github.com/RadiumP/WebAO" target="_blank"> Github Link</a><a href="WebGL/WebAO/plusAO.html" target="_blank"> Link</a>'
             },
             {
                 thumb: "thumbs/dice_thumb.png",
